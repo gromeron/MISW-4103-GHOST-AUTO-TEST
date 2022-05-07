@@ -27,7 +27,15 @@ En caso de presentar errores proceder con la instalación de la versión del cyp
 ghost install 3.41.1 --local --force
 ```
 
-Si esto no funciona ejecutar desde la misma carpeta de la instalación local
+```bash
+npm install -g ghost-cli@latest
+```
+
+```bash
+npm install sqlite3 --save
+```
+
+Si esto no funciona, se puede borrar el contenido de la carpeta local y ejecutar desde esta el siguiente comando
 
 ```bash
 ghost update v.3.41.1 --force
@@ -37,6 +45,13 @@ Posteriormente volver a ejecutar
 
 ```bash
 ghost start
+```
+
+Despues de instalado, ingresar a la url `http://localhost:2368/ghost/`, una vez adentro registrar un usuario con las credenciales
+
+```bash
+Correo: g.romeron2@uniandes.edu.co
+Clave: 1234567890!
 ```
 
 ## 2. Instalación y ejecución de cypress
