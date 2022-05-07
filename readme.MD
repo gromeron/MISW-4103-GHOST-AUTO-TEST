@@ -27,6 +27,12 @@ En caso de presentar errores proceder con la instalación de la versión del cyp
 ghost install 3.41.1 --local --force
 ```
 
+Si esto no funciona ejecutar desde la misma carpeta de la instalación local
+
+```bash
+ghost update v.3.41.1 --force
+```
+
 Posteriormente volver a ejecutar
 
 ```bash
@@ -65,6 +71,12 @@ Se instalan las dependecias con
 
 ```bash
 npm install
+```
+
+Igualmente se debe instalar el módulo de kraken con
+
+```bash
+npm install kraken-node
 ```
 
 Se ejecuta el set de pruebas con
