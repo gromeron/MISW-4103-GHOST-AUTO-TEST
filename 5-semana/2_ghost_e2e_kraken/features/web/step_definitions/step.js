@@ -18,7 +18,17 @@ When("I click button", async function () {
   return await element.click();
 });
 
-When('I go to tags', async function() {
+When('I go to tags', async function () {
   let element = await this.driver.$('a[href*="tags"]');
+  return await element.click();
+});
+
+When('I click on new tag', async function () {
+  let element = await this.driver.$('a[href*="tags/new"]');
+  return await element.click();
+});
+
+When('I click on save tag', async function () {
+  let element = await this.driver.$('.gh-btn.gh-btn-blue.gh-btn-icon.ember-view');
   return await element.click();
 });
