@@ -1,19 +1,17 @@
+#Entrega semana 5:
+
 Las herramientas escogidas por el equipo para realizar el testing fueron Cypress y Kraken. Los scripts y archivos necesarios para ejecutar las pruebas de Cypres estan en la ruta /5-semana/1_ghost_e2e_cypress y los scripts y archivos necesarios para ejecutar las pruebas de Kraken estan en la ruta /5-semana/2_ghost_e2e_kraken.
 
-Funcionalidades escogidas:
-
-| ID | Funcionalidad | Descripción | Responsable | Herramientas |
+##Funcionalidades escogidas:
+| ID | Funcionalidad | Descripción | Herramientas |
 |---|---|---|---|---|
-| [FN01](FN01) | [Iniciar sesión](FN01) | Permitir que un usuario inicie sesión con sus datos personales | Gustavo Romero | kraken<br>cypress |
-| | Ver el sitio | Permite que un usuario navegue y revise las partes de la aplicación | | |
-| [FN02](FN02) | [Agregar post](FN02) | Permite a un usuario crear un post y publicarlo | Alba Cardona | kraken<br>cypress |
-| | Ver post | Permite a un usuario leer un post deseado | | |
-| [FN04](FN04) | [Crear tags](FN04) | Permite a un usuario crear etiquetas para clasificar el contenido | Hassler Isaac<br>Gustavo Romero | kraken<br>cypress |
-| [FN03](FN03) | [Crear página](FN03) | Permite al usuario crear paginas para publicar contenido | Nicolás Escobar | kraken<br>cypress |
-| [FN05](FN05) | [Editar perfil](FN05) | Permite la edicion de los datos del usuario | Hassler Isaac<br>Gustavo Romero | kraken<br>cypress |
+| [FN01](FN01) | [Iniciar sesión](FN01) | Permitir que un usuario inicie sesión con sus datos personales |  kraken<br>cypress |
+| [FN02](FN02) | [Agregar post](FN02) | Permite a un usuario crear un post y publicarlo | kraken<br>cypress |
+| [FN04](FN04) | [Crear tags](FN04) | Permite a un usuario crear etiquetas para clasificar el contenido |  kraken<br>cypress |
+| [FN03](FN03) | [Crear página](FN03) | Permite al usuario crear paginas para publicar contenido | kraken<br>cypress |
+| [FN05](FN05) | [Editar perfil](FN05) | Permite la edicion de los datos del usuario  | kraken<br>cypress |
 
-Escenarios de pruebas:
-
+##Escenarios de pruebas:
 | ID | Escenario | Funcionalidad | 
 |---|---|---|
 |es01|Inicio de sesión con usuario inválido / clave válida|FN01|
