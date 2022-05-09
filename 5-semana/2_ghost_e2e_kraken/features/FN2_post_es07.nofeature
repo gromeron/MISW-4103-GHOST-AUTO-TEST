@@ -1,4 +1,4 @@
-Feature: Crear tags
+Feature: Crear posts
 
     @user1 @web
     Scenario: 7. Usuario logueado - Crear post con título
