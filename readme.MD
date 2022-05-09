@@ -107,3 +107,4 @@ En caso de tener un error se debe instalar el ADB, para cada SO
     sudo apt-get install android-tools-adb
     ```
 
+Finalmente, los diferentes tipos de pruebas estan en varios archivos `.feature` los cuales estan renombrados como `.nofeature` y solamente uno de ellos se ejecuta y es el que tenga la extensión `.feature`
