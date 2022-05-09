@@ -1,6 +1,6 @@
-# Entrega semana 5:
+# Entrega semana 5: Testing E2E
 
-Las herramientas escogidas por el equipo para realizar el testing fueron Cypress y Kraken. Los scripts y archivos necesarios para ejecutar las pruebas de Cypres estan en la ruta /5-semana/1_ghost_e2e_cypress y los scripts y archivos necesarios para ejecutar las pruebas de Kraken estan en la ruta /5-semana/2_ghost_e2e_kraken.
+Las herramientas escogidas por el equipo para realizar el testing E2E fueron Cypress y Kraken. Los scripts y archivos necesarios para ejecutar las pruebas de Cypres estan en la ruta /5-semana/1_ghost_e2e_cypress y los scripts y archivos necesarios para ejecutar las pruebas de Kraken estan en la ruta /5-semana/2_ghost_e2e_kraken.
 
 ## Funcionalidades escogidas:
 
@@ -36,3 +36,5 @@ Las herramientas escogidas por el equipo para realizar el testing fueron Cypress
 |es18|Usuario logueado - Crear tag nuevo - Sin información|FN04|
 |es19|Usuario logueado - Crear tag nuevo - Con información|FN04|
 |es20|Actualizar perfil - Cambiar información Full Name, Slug y Email|FN05|
+
+Comparativo de herramientas de testing E2E utilizadas: https://github.com/gromeron/MISW-4103-Ghost-Auto-Test/wiki/Comparacion
