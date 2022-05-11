@@ -65,8 +65,8 @@ When('I click on new tag', async function () {
 });
 
 When('I type a tag title', async function () {
-  let element = await this.driver.$('input[id="tags-name"]');
-  return await element.type('New tag title');
+  let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
+  return await element.setValue('New tag title');
 });
 
 When('I click on save tag', async function () {
@@ -75,6 +75,11 @@ When('I click on save tag', async function () {
 });
 
 Then('I expect an error message', async function () {
-  let elements = await this.driver.$$('.gh-btn.gh-btn-blue.gh-btn-icon.gh-btn-red.ember-view');
-  expect(elements.length).to.equal(1);
+  let element = await this.driver.$$('.gh-btn.gh-btn-blue.gh-btn-icon.gh-btn-red.ember-view');
+  expect(element.length).to.equal(1);
+});
+
+Then('I expect a green button change', async function () {
+  let element = await this.driver.$$('.gh-btn.gh-btn-blue.gh-btn-icon.ember-view');
+  expect(element.length).to.equal(1);
 })
