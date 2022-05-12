@@ -20,6 +20,15 @@ When("I enter password {kraken-string}", async function (password) {
 
 When("I click login button", async function () {
   let element = await this.driver.$("#ember12");
-
   return await element.click();
+});
+
+Then('I expect an error message login', async function () {
+  let element = await this.driver.$$('.login.gh-btn.gh-btn-blue.gh-btn-block.gh-btn-icon.gh-btn-red.ember-view');
+  expect(element.length).to.equal(1);
+});
+
+Then('Then I expect to be logged in', async function () {
+  let element = await this.driver.$$(".gh-nav-list.gh-nav-settings");
+  expect(element.length).to.equal(1);
 });
