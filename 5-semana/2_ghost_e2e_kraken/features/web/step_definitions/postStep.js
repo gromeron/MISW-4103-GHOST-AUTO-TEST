@@ -57,3 +57,29 @@ Then('Verify post recently created', async function () {
     }
   }
 });
+
+When('I click on post back link', async function () {
+  let element = await this.driver.$('/html/body/div[2]/div/main/section/header/div/div[1]/a');
+  return await element.click();
+})
+
+Then('Verify last post saved and is in draft status', async function () {
+  isMostrar = true;
+  let i = 2;
+  while (isMostrar) {
+    let elementTitle = await this.driver.$$('/html/body/div[2]/div/main/section/section/ol/li[' + i + ']/a[2]/h3');
+    let elementDraft = await this.driver.$$('/html/body/div[2]/div/main/section/section/ol/li[' + i + ']/a[5]/div/span');
+    if (elementTitle.length > 0) {
+      let postSave = elementTitle[0].getText();
+      let draftSave = elementDraft[0].getText();
+      if (postSave == postTitle && draftSave == 'Draft') {
+        isMostrar = false;
+        return assert.equal(postSave, postTitle, 'El post ha sido encontrado y es draft');
+      } else {
+        i++;
+      }
+    } else {
+      return assert.notEqual('', postTitle, 'El post no ha sido encontrado');
+    }
+  }
+});
