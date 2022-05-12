@@ -1,4 +1,11 @@
+const { faker } = require('@faker-js/faker');
+
 context("Actions", () => {
+
+    var postTitle = faker.animal.fish();
+    var postBody = faker.lorem.paragraphs(2);
+
+
     beforeEach(() => {
         cy.visit("http://localhost:2368/ghost/#/signin");
         cy.get("#ember8").type("g.romeron2@uniandes.edu.co", { force: true });
@@ -7,15 +14,25 @@ context("Actions", () => {
         cy.wait(7000);
     });
 
-    it("5. Usuario logueado - Crear post con título - navegación", () => {
-        cy.get("#ember28").click();
-        cy.wait(7000);
+    it("5. Usuario logueado - Crear post con título - Publicar - Verificar publicación", () => {
+        cy.get('a[href="#/posts/"]').first().click();
+        cy.wait(1000);
         cy.screenshot("Post/Escenario5_1");
         cy.url().should("eq", "http://localhost:2368/ghost/#/posts");
         cy.screenshot("Post/Escenario5_2");
+        cy.wait(1000);
+        cy.get('a[href="#/editor/post/"]').first().click();
+        cy.wait(1000);
+        cy.screenshot("Post/Escenario5_3");
+        cy.get(".gh-editor-title.ember-text-area.gh-input.ember-view").type(postTitle, { force: true });
+        cy.wait(1000);
+        cy.screenshot("Post/Escenario5_4");
+        cy.get(".koenig-editor__editor.__mobiledoc-editor.__has-no-content").type(postBody, { force: true });
+        cy.wait(1000);
+        cy.screenshot("Post/Escenario5_5");
     });
 
-    it("6. Usuario logueado - Crear post con título navegación segundo nivel", () => {
+    /* it("6. Usuario logueado - Crear post con título navegación segundo nivel", () => {
         cy.get("#ember28").click();
         cy.wait(7000);
         cy.url().should("eq", "http://localhost:2368/ghost/#/posts");
@@ -114,5 +131,5 @@ context("Actions", () => {
             expect($p.first()).to.contain('Draft')
         });
         cy.screenshot('Post/Escenario11_2')
-    })
+    }) */
 });
