@@ -32,14 +32,56 @@ When('I type original user email {kraken-string}', async function (email) {
     return await element.setValue(email);
 });
 
+When('I type old user password {kraken-string}', async function (oldPassword) {
+    let element = await this.driver.$('#user-password-old');
+    return await element.setValue(oldPassword);
+});
+
+When('I type new user password {kraken-string}', async function (newPassword) {
+    let element = await this.driver.$('#user-password-new');
+    return await element.setValue(newPassword);
+});
+
+When('I type new user password confirmation {kraken-string}', async function (newPassword) {
+    let element = await this.driver.$('#user-new-password-verification');
+    return await element.setValue(newPassword);
+});
+
 When('I click update profile button', async function () {
     let element = await this.driver.$(".gh-btn.gh-btn-blue.gh-btn-icon.ember-view");
     return await element.click();
 });
+
+When('I click update password profile button', async function () {
+    let element = await this.driver.$(".gh-btn.gh-btn-icon.button-change-password.gh-btn-red.ember-view");
+    return await element.click();
+});
+
+Then('I expect new email profile saved {kraken-string}', async function (newEmail) {
+    let element = await this.driver.$('#user-email');
+    let value = await element.getValue();
+    return await expect(value).to.equal(newEmail);
+})
 
 Then('I expect original email profile updated {kraken-string}', async function (originalEmail) {
     let element = await this.driver.$('#user-email');
     let value = await element.getValue();
     return await expect(value).to.equal(originalEmail);
 })
+
+Then('I expect a red button change profile', async function () {
+    let element = await this.driver.$$('.gh-btn.gh-btn-blue.gh-btn-icon.gh-btn-red.ember-view');
+    expect(element.length).to.equal(1);
+})
+
+Then('I expect password was updated', async function () {
+    let element = await this.driver.$$('.gh-notification.gh-notification-passive.ember-view');
+    expect(element.length).to.equal(1);
+})
+
+Then('I expect password was not updated', async function () {
+    let element = await this.driver.$$('.gh-alert.gh-alert-red.ember-view');
+    expect(element.length).to.equal(1);
+})
+
 

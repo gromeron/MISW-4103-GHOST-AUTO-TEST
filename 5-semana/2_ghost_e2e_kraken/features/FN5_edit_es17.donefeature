@@ -1,7 +1,7 @@
-Feature: Crear tags
+Feature: Actualizar perfil
 
     @user1 @web
-    Scenario: 17. Actualizar perfil - Cambiar información Full Name, Slug y Email - 
+    Scenario: 17. Cambiar información Full Name, Slug y Email, verificar que se actualizó y volver actualizar al email original.
         Given I navigate to login page "<LOGINURL>"
         And I wait for 5 seconds
         When I enter email "<USERNAME>"
@@ -26,6 +26,8 @@ Feature: Crear tags
         And I wait for 2 seconds
         When I go to my profile
         And I wait for 5 seconds
+        Then I expect new email profile saved "<NEWEMAIL>"
+        And I wait for 3 seconds
         When I type original user email "<USERNAME>"
         And I wait for 2 seconds
         When I click update profile button
