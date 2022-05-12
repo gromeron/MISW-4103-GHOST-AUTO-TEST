@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "chai": "^4.3.6",
+    "faker": "^6.6.6",
+    "faker-js": "^1.0.0",
     "kraken-node": "^1.0.24"
   }
 }

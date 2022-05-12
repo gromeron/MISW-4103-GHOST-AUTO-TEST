@@ -1,8 +1,12 @@
-const { Given, When, Then } = require("@cucumber/cucumber");
-const expect = require('chai').expect;
+const { When, Then } = require("@cucumber/cucumber");
+const { expect } = require('chai').expect;
 const assert = require('assert');
+const { faker } = require('@faker-js/faker');
+
 
 // Tags steps
+
+tagTitle = faker.company.companyName();
 
 When('I go to tags', async function () {
     let element = await this.driver.$('a[href*="tags"]');
@@ -14,9 +18,9 @@ When('I click on new tag', async function () {
     return await element.click();
 });
 
-When('I type a tag title {kraken-string}', async function (title) {
+When('I type a tag title', async function () {
     let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
-    return await element.setValue(title);
+    return await element.setValue(tagTitle);
 });
 
 When('I click on save tag', async function () {
@@ -40,7 +44,6 @@ Then('I expect a green button change', async function () {
     expect(element.length).to.equal(1);
 })
 
-
 When("I click on the first Tag", async function () {
     let element = await this.driver.$(
         "/html/body/div[2]/div/main/section/section/ol/li[2]/a[1]/h3"
@@ -63,4 +66,59 @@ When('I click on delete confirm button', async function () {
     return await element.click();
 })
 
+Then("Deleted tag should not be on the tag list", async function () {
+    isMostrar = true;
+    let i = 2;
+    while (isMostrar) {
+        let element = await this.driver.$$('/html/body/div[2]/div/main/section/section/ol/li[ ' + i + ']/a[1]/h3');
+        if (element.length > 0) {
+            let tagSave = await element[0].getText();
+            if (tagSave == tagTitle) {
+                isMostrar = false;
+                return assert.equal(tagSave, tagTitle);
+            } else {
+                i++;
+            }
+        } else {
+            return assert.notEqual('', tagTitle);
+        }
+    }
+});
 
+When("Select tag recently created", async function () {
+    isMostrar = true;
+    let i = 2;
+    while (isMostrar) {
+        let element = await this.driver.$$('/html/body/div[2]/div/main/section/section/ol/li[ ' + i + ']/a[1]/h3');
+        if (element.length > 0) {
+            let tagSave = await element[0].getText();
+            if (tagSave == tagTitle) {
+                isMostrar = false;
+                return await element[0].click();
+            } else {
+                i++;
+            }
+        } else {
+            return assert.equal('', tagTitle);
+        }
+    }
+});
+
+Then("Verify tag recently created", async function () {
+    isMostrar = true;
+    let i = 2;
+    while (isMostrar) {
+        let element = await this.driver.$$('/html/body/div[2]/div/main/section/section/ol/li[ ' + i + ']/a[1]/h3');
+        if (element.length > 0) {
+            let tagSave = await element[0].getText();
+            if (tagSave == tagTitle) {
+                isMostrar = false;
+                return assert.equal(tagSave, tagTitle);
+            } else {
+                i++;
+            }
+        } else {
+            return assert.notEqual('', tagTitle);
+        }
+    }
+});

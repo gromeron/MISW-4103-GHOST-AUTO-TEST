@@ -14,10 +14,17 @@ Feature: Crear tags
         And I wait for 1 seconds
         When I click on new tag
         And I wait for 1 seconds
-        When I type a tag title "<TAGTITLE>"
+        When I type a tag title
         And I wait for 1 seconds
         When I click on save tag
         Then I expect a green button change
-        When I click on the first Tag
-        Then I wait for 1 seconds
+        And I wait for 1 seconds
+        When I go to tags
+        And I wait for 1 seconds
+        When Select tag recently created
+        And I wait for 1 seconds
         When I click on delete tag button
+        And I wait for 1 seconds
+        When I click on delete confirm button
+        And I wait for 1 seconds
+        Then Deleted tag should not be on the tag list
