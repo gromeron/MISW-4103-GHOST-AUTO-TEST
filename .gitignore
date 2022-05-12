@@ -7,6 +7,22 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
+# LIB ADB
+5-semana/2_ghost_e2e_kraken/adb.exe
+5-semana/2_ghost_e2e_kraken/AdbWinApi.dll
+5-semana/2_ghost_e2e_kraken/AdbWinUsbApi.dll
+5-semana/2_ghost_e2e_kraken/dmtracedump.exe
+5-semana/2_ghost_e2e_kraken/etc1tool.exe
+5-semana/2_ghost_e2e_kraken/fastboot.exe
+5-semana/2_ghost_e2e_kraken/hprof-conv.exe
+5-semana/2_ghost_e2e_kraken/libwinpthread-1.dll
+5-semana/2_ghost_e2e_kraken/make_f2fs.exe
+5-semana/2_ghost_e2e_kraken/make_f2fs_casefold.exe
+5-semana/2_ghost_e2e_kraken/mke2fs.conf
+5-semana/2_ghost_e2e_kraken/mke2fs.exe
+5-semana/2_ghost_e2e_kraken/NOTICE.txt
+5-semana/2_ghost_e2e_kraken/source.properties
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
