@@ -148,3 +148,4 @@ dist
 # multimedia report binaries
 .mp4
 .png
+reports/
