@@ -1,6 +1,10 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const expect = require('chai').expect;
 
+Given('I navigate to login page {kraken-string}', async function (url) {
+  return await this.driver.url(url);
+});
+
 When("I enter email {kraken-string}", async function (email) {
   let element = await this.driver.$("#ember7");
 

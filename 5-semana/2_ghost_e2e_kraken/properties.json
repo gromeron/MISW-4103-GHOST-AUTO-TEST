@@ -1,4 +1,5 @@
 {
+    "LOGINURL": "http://localhost:2368/ghost/#/signin",
     "USERNAME": "g.romeron2@uniandes.edu.co",
     "PASSWORD": "1234567890!",
     "WRONGUSERNAME": "correoInvalido@correo.com",
