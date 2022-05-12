@@ -41,7 +41,7 @@ Then('I expect a green button change', async function () {
 })
 
 
-When("I clic on the first Tag", async function () {
+When("I click on the first Tag", async function () {
     let element = await this.driver.$(
         "/html/body/div[2]/div/main/section/section/ol/li[2]/a[1]/h3"
     );
@@ -51,4 +51,16 @@ When("I clic on the first Tag", async function () {
 Then('The tag name should not be empty', async function () {
     let element = await this.driver.$$('input[id="tag-name"]');
     expect(element.length).to.equal(1);
+});
+
+When('I click on delete tag button', async function () {
+    let element = await this.driver.$(".gh-btn.gh-btn-red.gh-btn-icon.mb15");
+    return await element.click();
+});
+
+When('I click on delete confirm button', async function () {
+    let element = await this.driver.$(".gh-btn.gh-btn-red.gh-btn-icon.ember-view");
+    return await element.click();
 })
+
+

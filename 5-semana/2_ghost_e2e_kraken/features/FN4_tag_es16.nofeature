@@ -1,17 +1,23 @@
 Feature: Crear tags
 
     @user1 @web
-    Scenario: 16. Usuario logueado - Crear tag nuevo - Sin información
-        Given I navigate to page "http://localhost:2368/ghost/#/signin"
-        And I wait for 5 seconds
+    Scenario: 16. Usuario logueado - Crear tag nuevo - Con titulo - Grabar - Registrar Boton verde - Seleccionar primer tag - Borrar tag
+        Given I navigate to login page "<LOGINURL>"
+        And I wait for 2 seconds
         When I enter email "<USERNAME>"
-        And I wait for 5 seconds
+        And I wait for 2 seconds
         When I enter password "<PASSWORD>"
         And I wait for 2 seconds
-        When I click button
-        And I wait for 3 seconds
+        When I click login button
+        And I wait for 1 seconds
         When I go to tags
-        And I wait for 3 seconds
+        And I wait for 1 seconds
         When I click on new tag
-        And I wait for 3 seconds
+        And I wait for 1 seconds
+        When I type a tag title "<TAGTITLE>"
+        And I wait for 1 seconds
         When I click on save tag
+        Then I expect a green button change
+        When I click on the first Tag
+        Then I wait for 1 seconds
+        When I click on delete tag button
