@@ -44,7 +44,7 @@ Then('I expect a green button change', async function () {
     expect(element.length).to.equal(1);
 })
 
-When("I click on the first Tag", async function () {
+When('I click on the first Tag', async function () {
     let element = await this.driver.$(
         "/html/body/div[2]/div/main/section/section/ol/li[2]/a[1]/h3"
     );
@@ -66,7 +66,7 @@ When('I click on delete confirm button', async function () {
     return await element.click();
 })
 
-Then("Deleted tag should not be on the tag list", async function () {
+Then('Deleted tag should not be on the tag list', async function () {
     isMostrar = true;
     let i = 2;
     while (isMostrar) {
@@ -85,7 +85,7 @@ Then("Deleted tag should not be on the tag list", async function () {
     }
 });
 
-When("Select tag recently created", async function () {
+When('Select tag recently created', async function () {
     isMostrar = true;
     let i = 2;
     while (isMostrar) {
@@ -104,7 +104,7 @@ When("Select tag recently created", async function () {
     }
 });
 
-Then("Verify tag recently created", async function () {
+Then('Verify tag recently created', async function () {
     isMostrar = true;
     let i = 2;
     while (isMostrar) {
