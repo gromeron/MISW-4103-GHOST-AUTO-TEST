@@ -6,12 +6,12 @@ context("Actions", () => {
     var postBody = faker.lorem.paragraphs(2);
 
 
-    beforeEach(() => {
+     beforeEach(() => {
         cy.visit("http://localhost:2368/ghost/#/signin");
-        cy.get("#ember8").type("g.romeron2@uniandes.edu.co", { force: true });
-        cy.get("#ember10").type("1234567890!", { force: true });
-        cy.get("#ember12").click();
-        cy.wait(7000);
+        cy.get(".email.ember-text-field.gh-input.ember-view").type("contacto.hardomo@gmail.com", { force: true });
+        cy.get(".password.ember-text-field.gh-input.ember-view").type("ga12345678", { force: true });
+        cy.get(".login.gh-btn.gh-btn-blue.gh-btn-block.gh-btn-icon.ember-view").click();
+        cy.wait(3000);
     });
 
     it("5. Usuario logueado - Crear post con título - Publicar - Verificar publicación", () => {
@@ -24,12 +24,24 @@ context("Actions", () => {
         cy.get('a[href="#/editor/post/"]').first().click();
         cy.wait(1000);
         cy.screenshot("Post/Escenario5_3");
-        cy.get(".gh-editor-title.ember-text-area.gh-input.ember-view").type(postTitle, { force: true });
+        cy.get(".gh-editor-title.ember-text-area.gh-input.ember-view").type("Post Prueba Nuevo", { force: true });
         cy.wait(1000);
         cy.screenshot("Post/Escenario5_4");
-        cy.get(".koenig-editor__editor.__mobiledoc-editor.__has-no-content").type(postBody, { force: true });
+        cy.get(".koenig-editor__editor.__mobiledoc-editor.__has-no-content").type("Contenido del nuevo post", { force: true });
         cy.wait(1000);
         cy.screenshot("Post/Escenario5_5");
+        cy.get(".ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger").click();
+        cy.wait(1000);
+        cy.screenshot("Post/Escenario5_6");
+        cy.get(".gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view").click();
+        cy.wait(1000);
+        cy.screenshot("Post/Escenario5_7");
+        cy.get('a[href="#/posts/"]').first().click();
+        cy.wait(1000);
+        cy.screenshot("Post/Escenario5_8");
+        cy.get(".ember-view.permalink.gh-list-data.gh-post-list-status").click();
+        cy.wait(1000);
+        cy.screenshot("Post/Escenario5_9");
     });
 
     /* it("6. Usuario logueado - Crear post con título navegación segundo nivel", () => {
