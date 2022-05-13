@@ -7,6 +7,8 @@
     "WRONGUSERNAME": "correoInvalido@correo.com",
     "WRONGPASSWORD": "passwordInvalido",
     "TAGTITLE": "Titulo de tag de prueba",
+    "PAGETITLE": "Titulo de pagina de prueba #",
+    "PAGEDESCRIPTION": "Descripcion de pagina de prueba #",
     "NEWFULLNAME": "Full name de prueba",
     "NEWSLUGNAME": "New slug de prueba"
 }
