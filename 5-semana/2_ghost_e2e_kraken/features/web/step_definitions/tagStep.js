@@ -61,7 +61,7 @@ When('I click on delete tag button', async function () {
     return await element.click();
 });
 
-When('I click on delete confirm button', async function () {
+When('I click on delete tag confirm button', async function () {
     let element = await this.driver.$(".gh-btn.gh-btn-red.gh-btn-icon.ember-view");
     return await element.click();
 })

@@ -127,3 +127,40 @@ Then('Verify post recently created is published', async function () {
     }
   }
 });
+
+When('I click on settings post button', async function () {
+  let element = await this.driver.$('/html/body/div[2]/div/main/section/header/section/button');
+  return await element.click();
+})
+
+When('I click on delete post button', async function () {
+  let element = await this.driver.$('/html/body/div[4]/div/div/div/div/div/div/div/div[1]/div[2]/form/button/span');
+  return await element.click();
+});
+
+When('I click on delete post confirm button', async function () {
+  let element = await this.driver.$('.gh-btn.gh-btn-red.gh-btn-icon.ember-view');
+  return await element.click();
+});
+
+Then('Deleted post should not be on the posts list', async function () {
+  isMostrar = true;
+  let i = 2;
+  while (isMostrar) {
+      let element = await this.driver.$$('/html/body/div[2]/div/main/section/section/ol/li[' + i + ']/a[2]/h3');
+      if (element.length > 0) {
+          let postSave = await element[0].getText();
+          if (postSave == postTitle) {
+              isMostrar = false;
+              return assert.equal(postSave, postTitle, 'El post no ha sido borrado');
+          } else {
+              i++;
+          }
+      } else {
+          return assert.notEqual('', postTitle, 'El post ha sido borrado con éxito');
+      }
+  }
+});
+
+
+
