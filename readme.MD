@@ -68,6 +68,10 @@ Se instalan las dependecias con
 npm install
 ```
 
+```bash
+npm install @faker-js/faker --save-dev
+```
+
 Se ejecuta el set de pruebas con
 
 ```bash

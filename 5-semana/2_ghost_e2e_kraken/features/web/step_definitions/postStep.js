@@ -6,7 +6,7 @@ const { faker } = require('@faker-js/faker');
 // Post steps
 
 postTitle = faker.animal.fish();
-postBody = faker.lorem.paragraphs(2);
+postBody = faker.lorem.paragraphs(1);
 
 When('I go to posts', async function () {
   let element = await this.driver.$('a[href*="posts"]');
@@ -50,7 +50,7 @@ Then('Verify post recently created', async function () {
         isMostrar = false;
         return assert.equal(postSave, postTitle, 'Post creado satisfactoriamente');
       } else {
-        i++
+        i++;
       }
     } else {
       return assert.notEqual('', postTitle, 'Post creado, no encontrado');
@@ -80,6 +80,50 @@ Then('Verify last post saved and is in draft status', async function () {
       }
     } else {
       return assert.notEqual('', postTitle, 'El post no ha sido encontrado');
+    }
+  }
+});
+
+When('Select post recently created', async function () {
+  isMostrar = true;
+  let i = 2;
+  while (isMostrar) {
+      let element = await this.driver.$$('/html/body/div[2]/div/main/section/section/ol/li[' + i + ']/a[2]/h3');
+      if (element.length > 0) {
+          let postSave = await element[0].getText();
+          if (postSave == postTitle) {
+              isMostrar = false;
+              return await element[0].click();
+          } else {
+              i++;
+          }
+      } else {
+          return assert.equal('', postTitle, 'No se encuentra el post recientemente creado');
+      }
+  }
+});
+
+Then('Verify post recently created is published', async function () {
+  isMostrar = true;
+  let i = 2;
+  while (isMostrar) {
+    let elementPost = await this.driver.$$('/html/body/div[2]/div/main/section/section/ol/li[' + i + ']/a[2]/h3');
+    let elementPublished = await this.driver.$$('/html/body/div[2]/div/main/section/section/ol/li[' + i + ']/a[5]/div/span');
+    if (elementPost.length > 0) {
+      let postSave = await elementPost[0].getText();
+      let publishSave = await elementPublished[0].getText();
+      if (postSave == postTitle && publishSave == 'Published') {
+        isMostrar = false;
+        await this.driver.execute(() => {
+          elementPost.window.scroll();
+        });
+        await this.driver.saveScreenshot('./captura.png');
+        return assert.equal(postSave, postTitle, 'Post publicado satisfactoriamente');
+      } else {
+        i++;
+      }
+    } else {
+      return assert.notEqual('', postTitle, 'Post creado, no publicado');
     }
   }
 });
