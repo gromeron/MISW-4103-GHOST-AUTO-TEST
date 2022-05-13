@@ -108,9 +108,9 @@ Then('Verify tag recently created', async function () {
     isMostrar = true;
     let i = 2;
     while (isMostrar) {
-        let element = await this.driver.$$('/html/body/div[2]/div/main/section/section/ol/li[ ' + i + ']/a[1]/h3');
-        if (element.length > 0) {
-            let tagSave = await element[0].getText();
+        let element = await this.driver.$$(".content-list li a h3")[i];
+        if (element) {
+            let tagSave = await element.getText();
             if (tagSave == tagTitle) {
                 isMostrar = false;
                 return assert.equal(tagSave, tagTitle);
