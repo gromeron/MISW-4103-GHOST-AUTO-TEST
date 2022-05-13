@@ -4,17 +4,17 @@ context("Actions", () => {
     });
   
     it("1. Inicio de sesión con usuario inválido / clave válida", () => {
-      cy.get("#ember8").type("correoInvalido@correo.com", { force: true });
-      cy.get("#ember10").type("1234567890!", { force: true });
-      cy.get("#ember12").click();
-      cy.wait(2000);
-      cy.screenshot("Login/Escenario1_1");
-      cy.get("p").should(($p) => {
-        expect($p.first()).to.contain(
-          "There is no user with that email address."
-        );
-      });
-      cy.screenshot("Login/Escenario1_2");
+        cy.get(".email.ember-text-field.gh-input.ember-view").type('correoInvalido@correo.com', { force: true });
+        cy.get(".password.ember-text-field.gh-input.ember-view").type('1234567890!', { force: true });
+        cy.get(".login.gh-btn.gh-btn-blue.gh-btn-block.gh-btn-icon.ember-view").click();
+        cy.wait(2000);
+        cy.screenshot("Login/Escenario1_1");
+        cy.get("p").should(($p) => {
+            expect($p.first()).to.contain(
+                "There is no user with that email address."
+            );
+        });
+        cy.screenshot("Login/Escenario1_2");
     });
   
     it("2. Inicio de sesión con clave inválida / usuario válido", () => {
