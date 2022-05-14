@@ -129,12 +129,12 @@ Then('Verify post recently created is published', async function () {
 });
 
 When('I click on settings post button', async function () {
-  let element = await this.driver.$('/html/body/div[2]/div/main/section/header/section/button');
+  let element = await this.driver.$('.post-settings');
   return await element.click();
 })
 
 When('I click on delete post button', async function () {
-  let element = await this.driver.$('/html/body/div[4]/div/div/div/div/div/div/div/div[1]/div[2]/form/button/span');
+  let element = await this.driver.$('.gh-btn.gh-btn-hover-red.gh-btn-icon.settings-menu-delete-button');
   return await element.click();
 });
 

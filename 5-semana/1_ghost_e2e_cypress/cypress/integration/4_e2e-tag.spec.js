@@ -1,52 +1,80 @@
-context("Actions", () => {
+const login = require('../functions/login');
+const { faker } = require('@faker-js/faker');
+const tag = require('../functions/tag');
+
+describe("FN02 - Tags", () => {
+
     beforeEach(() => {
-        cy.visit("http://localhost:2368/ghost/#/signin");
-        cy.get("#ember8").type("g.romeron2@uniandes.edu.co", { force: true });
-        cy.get("#ember10").type("1234567890!", { force: true });
-        cy.get("#ember12").click();
-        cy.wait(7000);
+        cy.visit('/');
+        login.loginRegistrar(cy, Cypress.env('EMAIL'), Cypress.env('PASSWORD'));
+        cy.wait(3000);
     });
 
-    it("17. Usuario logueado - Ver página de tags", () => {
-        cy.screenshot("Tag/Escenario17_1");
-        cy.get('a[href*="tags"]').click();
-        cy.wait(7000);
-        cy.screenshot("Tag/Escenario17_2");
-        cy.url().should("eq", "http://localhost:2368/ghost/#/tags");
-        cy.screenshot("Tag/Escenario17_3");
+    it("13. Usuario logueado - Crear tag nuevo - Sin información", () => {
+        cy.screenshot("Tag/Escenario13_1");
+        tag.tagMain(cy);
+        cy.screenshot("Tag/Escenario13_2");
+        tag.tagNew(cy);
+        cy.screenshot("Tag/Escenario13_3");
+        tag.tagSave(cy);
+        cy.screenshot("Tag/Escenario13_4");
+        tag.tagError(cy);
+        cy.screenshot("Tag/Escenario13_5");
     });
 
-    it("18. Usuario logueado - Crear tag nuevo - Sin información", () => {
-        cy.screenshot("Tag/Escenario18_1");
-        cy.get('a[href*="tags"]').click();
-        cy.wait(7000);
-        cy.screenshot("Tag/Escenario18_2");
-        cy.url().should("eq", "http://localhost:2368/ghost/#/tags");
-        cy.screenshot("Tag/Escenario18_3");
-        cy.get('a[href*="tags/new"]').first().click();
-        cy.wait(4000);
-        cy.screenshot("Tag/Escenario18_4");
-        cy.url().should("eq", "http://localhost:2368/ghost/#/tags/new")
-        cy.screenshot("Tag/Escenario18_5");
-        cy.get(".gh-btn.gh-btn-blue.gh-btn-icon.ember-view").click();
-        cy.screenshot("Tag/Escenario18_6");
+    it("14. Usuario logueado - ver página de tags - Picar primer tag - Verificar que no esté vácio", () => {
+        cy.screenshot("Tag/Escenario14_1");
+        tag.tagMain(cy);
+        cy.screenshot("Tag/Escenario14_2");
+        tag.tagFirstElement(cy);
+        cy.screenshot("Tag/Escenario14_3");
+        tag.tagNameNotEmpty(cy);
+        cy.screenshot("Tag/Escenario14_4");
     });
 
-    it("19. Usuario logueado - Crear tag nuevo - Con información", () => {
-        cy.screenshot("Tag/Escenario19_1");
-        cy.get('a[href*="tags"]').click();
-        cy.wait(7000);
-        cy.screenshot("Tag/Escenario19_2");
-        cy.url().should("eq", "http://localhost:2368/ghost/#/tags");
-        cy.screenshot("Tag/Escenario19_3");
-        cy.get('a[href*="tags/new"]').first().click();
-        cy.wait(4000);
-        cy.screenshot("Tag/Escenario19_4");
-        cy.url().should("eq", "http://localhost:2368/ghost/#/tags/new")
-        cy.screenshot("Tag/Escenario19_5");
-        cy.get("#tag-name")
-          .type("Tag nuevo");
-        cy.get(".gh-btn.gh-btn-blue.gh-btn-icon.ember-view").click();
-        cy.screenshot("Tag/Escenario19_6");
+    it("15. Usuario logueado - Crear tag nuevo - Con titulo - Grabar - Verificar que se haya creado el tag", () => {
+        let tagTitle = faker.company.companyName();
+        
+        cy.screenshot("Tag/Escenario15_1");
+        tag.tagMain(cy);
+        cy.screenshot("Tag/Escenario15_2");
+        tag.tagNew(cy);
+        cy.screenshot("Tag/Escenario15_3");
+        tag.tagTypeTitle(cy, tagTitle);
+        cy.screenshot("Tag/Escenario15_4");
+        tag.tagSave(cy);
+        cy.screenshot("Tag/Escenario15_5");
+        tag.tagMain(cy);
+        cy.screenshot("Tag/Escenario15_6");
+        tag.verifyTagCreated(cy, tagTitle);
+        cy.screenshot("Tag/Escenario15_7");
+    });
+
+    it("16. Usuario logueado - Crear tag nuevo - Con titulo - Grabar - Verificar tag creado en la lista - Seleccionar tag recientemente creado - Borrar tag - Verificar que el tag haya sido borrado", () => {
+        let tagTitle = faker.company.companyName();
+        
+        cy.screenshot("Tag/Escenario15_1");
+        tag.tagMain(cy);
+        cy.screenshot("Tag/Escenario15_2");
+        tag.tagNew(cy);
+        cy.screenshot("Tag/Escenario15_3");
+        tag.tagTypeTitle(cy, tagTitle);
+        cy.screenshot("Tag/Escenario15_4");
+        tag.tagSave(cy);
+        cy.screenshot("Tag/Escenario15_5");
+        tag.tagMain(cy);
+        cy.screenshot("Tag/Escenario15_6");
+        tag.verifyTagCreated(cy, tagTitle);
+        cy.wait(3000);
+        cy.screenshot("Tag/Escenario15_7");
+        /* tag.selectTagCreated(cy, tagTitle)
+        cy.screenshot("Tag/Escenario15_8");
+        tag.deleteTagButton(cy);
+        cy.screenshot("Tag/Escenario15_9");
+        tag.deleteTagButtonConfirm(cy);
+        cy.screenshot("Tag/Escenario15_10");
+        tag.verifyDeletedTag(cy, tagTitle);
+        cy.screenshot("Tag/Escenario15_11"); */
+
     });
 });

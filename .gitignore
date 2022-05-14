@@ -150,5 +150,8 @@ dist
 .png
 reports/
 
-1_ghost_e2e_cypress/cypress/screenshots/
-1_ghost_e2e_cypress/cypress/videos/
+5-semana/1_ghost_e2e_cypress/cypress/screenshots/
+5-semana/1_ghost_e2e_cypress/cypress/videos/
+
+
+1-ghost-local/content/data/ghost-local.db

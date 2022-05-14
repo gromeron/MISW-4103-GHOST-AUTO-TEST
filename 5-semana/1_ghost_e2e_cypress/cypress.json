@@ -1,1 +1,7 @@
-{}
+{
+    "baseUrl": "http://localhost:2368/ghost/#/signin",
+    "env": {
+        "EMAIL": "g.romeron2@uniandes.edu.co",
+        "PASSWORD": "1234567890!"
+    }
+}
