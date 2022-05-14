@@ -1,7 +1,7 @@
 Feature: Crear pagina
 
     @user1 @web
-     Scenario: 12. Usuario logueado - Crear página con título - Ir al listado de páginas
+     Scenario: 12. Usuario logueado - Crear página con título - Publicar pagina - Ir al listado de páginas - Verificar que hay por lo menos una pagina creada
         Given I navigate to login page "<LOGINURL>"
         And I wait for 1 seconds
         When I enter email "<USERNAME>"

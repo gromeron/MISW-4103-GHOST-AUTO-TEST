@@ -8,6 +8,7 @@
     "WRONGPASSWORD": "passwordInvalido",
     "TAGTITLE": "Titulo de tag de prueba",
     "PAGETITLE": "Titulo de pagina de prueba #",
+    "PAGETITLEDRAFT": "Titulo de pagina de prueba #",
     "PAGEDESCRIPTION": "Descripcion de pagina de prueba #",
     "NEWFULLNAME": "Full name de prueba",
     "NEWSLUGNAME": "New slug de prueba"
