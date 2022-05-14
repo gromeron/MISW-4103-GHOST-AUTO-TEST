@@ -7,51 +7,59 @@ context("Actions", () => {
 
 
      beforeEach(() => {
-        cy.visit("http://localhost:2368/ghost/#/signin");
-        cy.get(".email.ember-text-field.gh-input.ember-view").type("g.romeron2@uniandes.edu.co", { force: true });
-        cy.get(".password.ember-text-field.gh-input.ember-view").type("1234567890!", { force: true });
-        cy.get(".login.gh-btn.gh-btn-blue.gh-btn-block.gh-btn-icon.ember-view").click();
-        cy.wait(3000);
-    });
+                cy.visit("http://localhost:2368/ghost/#/signin");
+                cy.get(".email.ember-text-field.gh-input.ember-view").type("g.romeron2@uniandes.edu.co", { force: true });
+                cy.get(".password.ember-text-field.gh-input.ember-view").type("1234567890!", { force: true });
+                cy.get(".login.gh-btn.gh-btn-blue.gh-btn-block.gh-btn-icon.ember-view").click();
+                cy.wait(3000);
+            });
 
-    it("5. Usuario logueado - Crear post con título - Publicar - Verificar publicación", () => {
-        cy.get('a[href="#/posts/"]').first().click();
-        cy.wait(1000);
-        cy.screenshot("Post/Escenario5_1");
-        cy.url().should("eq", "http://localhost:2368/ghost/#/posts");
-        cy.screenshot("Post/Escenario5_2");
-        cy.wait(1000);
-        cy.get('a[href="#/editor/post/"]').first().click();
-        cy.wait(1000);
-        cy.screenshot("Post/Escenario5_3");
-        cy.get(".gh-editor-title.ember-text-area.gh-input.ember-view").type("Post Prueba Nuevo", { force: true });
-        cy.wait(1000);
-        cy.screenshot("Post/Escenario5_4");
-        cy.get(".koenig-editor__editor.__mobiledoc-editor.__has-no-content").type("Contenido del nuevo post", { force: true });
-        cy.wait(1000);
-        cy.screenshot("Post/Escenario5_5");
-        cy.get(".ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger").click();
-        cy.wait(1000);
-        cy.screenshot("Post/Escenario5_6");
-        cy.get(".gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view").click();
-        cy.wait(1000);
-        cy.screenshot("Post/Escenario5_7");
-        cy.get('a[href="#/posts/"]').first().click();
-        cy.wait(1000);
-        cy.screenshot("Post/Escenario5_8");
-    });
+            it("5. Usuario logueado - Crear post con título - Publicar - Verificar publicación", () => {
+                cy.get('a[href="#/posts/"]').first().click();
+                cy.wait(1000);
+                cy.screenshot("Post/Escenario5_1");
+                cy.url().should("eq", "http://localhost:2368/ghost/#/posts");
+                cy.screenshot("Post/Escenario5_2");
+                cy.wait(1000);
+                cy.get('a[href="#/editor/post/"]').first().click();
+                cy.wait(1000);
+                cy.screenshot("Post/Escenario5_3");
+                cy.get(".gh-editor-title.ember-text-area.gh-input.ember-view").type("Post Prueba Nuevo", { force: true });
+                cy.wait(1000);
+                cy.screenshot("Post/Escenario5_4");
+                cy.get(".koenig-editor__editor.__mobiledoc-editor.__has-no-content").type("Contenido del nuevo post", { force: true });
+                cy.wait(1000);
+                cy.screenshot("Post/Escenario5_5");
+                cy.get(".ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger").click();
+                cy.wait(1000);
+                cy.screenshot("Post/Escenario5_6");
+                cy.get(".gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view").click();
+                cy.wait(1000);
+                cy.screenshot("Post/Escenario5_7");
+                cy.get('a[href="#/posts/"]').first().click();
+                cy.wait(1000);
+                cy.screenshot("Post/Escenario5_8");
+            });
 
-    /* it("6. Usuario logueado - Crear post con título navegación segundo nivel", () => {
-        cy.get("#ember28").click();
-        cy.wait(7000);
-        cy.url().should("eq", "http://localhost:2368/ghost/#/posts");
-        cy.get('a[href*="editor/post"]').first().click();
-        cy.wait(7000);
-        cy.screenshot("Post/Escenario6_1");
-        cy.url().should("eq", "http://localhost:2368/ghost/#/editor/post");
-        cy.screenshot("Post/Escenario6_2");
-    });
+            it("6. Usuario logueado - Crear post con título y cuerpo - Retornar sin publicar - Verificar que el post este guardado y esté en estado draft", () => {
+                cy.get('a[href="#/posts/"]').first().click();
+                cy.wait(1000);
+                cy.screenshot("Post/Escenario6_1");
+                cy.url().should("eq", "http://localhost:2368/ghost/#/posts");
+                cy.screenshot("Post/Escenario6_2");
+                cy.wait(1000);
+                cy.get('a[href="#/editor/post/"]').first().click();
+                cy.wait(1000);
+                cy.screenshot("Post/Escenario6_3");
+                cy.get(".gh-editor-title.ember-text-area.gh-input.ember-view").type("Post Prueba Nuevo2", { force: true });
+                cy.wait(1000);
+                cy.screenshot("Post/Escenario6_4");
+                cy.get(".koenig-editor__editor.__mobiledoc-editor.__has-no-content").type("Contenido del siguiente post", { force: true });
+                cy.wait(1000);
+                cy.screenshot("Post/Escenario6_5");
 
+            });
+/*
     it("7. Usuario logueado -Crear post con título", () => {
         cy.get("#ember28").click();
         cy.wait(7000);
