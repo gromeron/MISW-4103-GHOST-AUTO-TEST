@@ -57,7 +57,9 @@ context("Actions", () => {
                 cy.get(".koenig-editor__editor.__mobiledoc-editor.__has-no-content").type("Contenido del siguiente post", { force: true });
                 cy.wait(1000);
                 cy.screenshot("Post/Escenario6_5");
-
+                cy.get('a[href="#/posts/"]').first().click();
+                cy.wait(1000);
+                cy.screenshot("Post/Escenario6_6");
             });
 /*
     it("7. Usuario logueado -Crear post con título", () => {
