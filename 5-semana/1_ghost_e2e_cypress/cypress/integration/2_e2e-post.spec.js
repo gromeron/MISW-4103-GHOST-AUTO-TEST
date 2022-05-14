@@ -8,8 +8,8 @@ context("Actions", () => {
 
      beforeEach(() => {
         cy.visit("http://localhost:2368/ghost/#/signin");
-        cy.get(".email.ember-text-field.gh-input.ember-view").type("contacto.hardomo@gmail.com", { force: true });
-        cy.get(".password.ember-text-field.gh-input.ember-view").type("ga12345678", { force: true });
+        cy.get(".email.ember-text-field.gh-input.ember-view").type("g.romeron2@uniandes.edu.co", { force: true });
+        cy.get(".password.ember-text-field.gh-input.ember-view").type("1234567890!", { force: true });
         cy.get(".login.gh-btn.gh-btn-blue.gh-btn-block.gh-btn-icon.ember-view").click();
         cy.wait(3000);
     });
