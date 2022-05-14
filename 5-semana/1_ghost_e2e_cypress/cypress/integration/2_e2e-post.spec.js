@@ -39,9 +39,6 @@ context("Actions", () => {
         cy.get('a[href="#/posts/"]').first().click();
         cy.wait(1000);
         cy.screenshot("Post/Escenario5_8");
-        cy.get(".ember-view.permalink.gh-list-data.gh-post-list-status").click();
-        cy.wait(1000);
-        cy.screenshot("Post/Escenario5_9");
     });
 
     /* it("6. Usuario logueado - Crear post con título navegación segundo nivel", () => {
