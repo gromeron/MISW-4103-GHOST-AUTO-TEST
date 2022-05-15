@@ -6,7 +6,10 @@ describe("FN02 - Tags", () => {
 
     beforeEach(() => {
         cy.clearCookies();
-        cy.visit('http://localhost:3002/');
+        cy.visit('http://localhost:3002/ghost/#/signin');
+        cy.wait(2000);
+        login.loginRegistrar(cy, Cypress.env('user1Email'), Cypress.env('user1Password'));
+        /*
         if (cy.url('http://localhost:3002/ghost/#/signin')) {
             login.loginRegistrar(cy, Cypress.env('user1Email'), Cypress.env('user1Password'));
         } else {
@@ -18,6 +21,7 @@ describe("FN02 - Tags", () => {
                 }
             })
         }
+         */
         cy.wait(3000);
     });
 
