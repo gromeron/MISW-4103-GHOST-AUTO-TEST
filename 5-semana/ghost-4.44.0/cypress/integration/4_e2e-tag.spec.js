@@ -6,7 +6,7 @@ describe("FN02 - Tags", () => {
 
     beforeEach(() => {
         cy.clearCookies();
-        cy.visit('/');
+        cy.visit('http://localhost:3002/');
         if (cy.url('http://localhost:3002/ghost/#/signin')) {
             login.loginRegistrar(cy, Cypress.env('user1Email'), Cypress.env('user1Password'));
         } else {
