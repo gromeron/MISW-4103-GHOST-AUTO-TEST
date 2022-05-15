@@ -65,6 +65,14 @@ Then('I expect page was scheduled', async function () {
   expect(element.length).to.equal(1);
 });
 
+Then('I expect we goes to pages editor', async function () {
+  let element = await this.driver.$$('.gh-editor-title.ember-text-area.gh-input.ember-view');
+  expect(element.length).to.equal(1);
+  let element2 = await this.driver.$$('.koenig-editor__editor.__mobiledoc-editor.__has-no-content');
+  expect(element2.length).to.equal(1);
+});
+
+
 Then('I expect there are more than zero pages created', async function () {
   let element = await this.driver.$$(".gh-list-row.gh-posts-list-item");
   let totalPages = element.length > 0;
