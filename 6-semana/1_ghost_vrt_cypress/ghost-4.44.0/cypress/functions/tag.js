@@ -1,7 +1,7 @@
 const tagMain = function (cy) {
     cy.get('a[href*="tags"]').first().click();
     cy.wait(1000);
-    cy.url().should("eq", "http://localhost:2368/ghost/#/tags");
+    cy.url().should("eq", "http://localhost:3002/ghost/#/tags");
 };
 
 const tagNew = function (cy) {
