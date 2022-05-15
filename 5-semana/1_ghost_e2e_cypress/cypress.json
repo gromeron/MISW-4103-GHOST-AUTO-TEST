@@ -1,7 +1,9 @@
 {
     "baseUrl": "http://localhost:2368/ghost/#/signin",
     "env": {
-        "EMAIL": "g.romeron2@uniandes.edu.co",
-        "PASSWORD": "1234567890!"
+        "siteTitle": "TFM Soluciones",
+        "fullName": "Gustavo Romero",
+        "user1Email": "g.romeron2@uniandes.edu.co",
+        "user1Password": "1234567890!"
     }
 }

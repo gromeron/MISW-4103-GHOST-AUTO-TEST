@@ -5,12 +5,23 @@ const tag = require('../functions/tag');
 describe("FN02 - Tags", () => {
 
     beforeEach(() => {
+        cy.clearCookies();
         cy.visit('/');
-        login.loginRegistrar(cy, Cypress.env('EMAIL'), Cypress.env('PASSWORD'));
+        if (cy.url('http://localhost:2368/ghost/#/signin')) {
+            login.loginRegistrar(cy, Cypress.env('user1Email'), Cypress.env('user1Password'));
+        } else {
+            cy.get('main').then(($m) => {
+                if ($m.find('form')) {
+                    if ($m.find('form[id="setup"]')) {
+                        login.setUpNewUser(cy, Cypress.env('siteTitle'), Cypress.env('fullName'), Cypress.env('user1Email'), Cypress.env('user1Password'));
+                    }
+                }
+            })
+        }
         cy.wait(3000);
     });
 
-    it("13. Usuario logueado - Crear tag nuevo - Sin información", () => {
+    /* it("13. Usuario logueado - Crear tag nuevo - Sin información", () => {
         cy.screenshot("Tag/Escenario13_1");
         tag.tagMain(cy);
         cy.screenshot("Tag/Escenario13_2");
@@ -48,11 +59,11 @@ describe("FN02 - Tags", () => {
         cy.screenshot("Tag/Escenario15_6");
         tag.verifyTagCreated(cy, tagTitle);
         cy.screenshot("Tag/Escenario15_7");
-    });
+    }); */
 
     it("16. Usuario logueado - Crear tag nuevo - Con titulo - Grabar - Verificar tag creado en la lista - Seleccionar tag recientemente creado - Borrar tag - Verificar que el tag haya sido borrado", () => {
         let tagTitle = faker.company.companyName();
-        
+
         cy.screenshot("Tag/Escenario15_1");
         tag.tagMain(cy);
         cy.screenshot("Tag/Escenario15_2");

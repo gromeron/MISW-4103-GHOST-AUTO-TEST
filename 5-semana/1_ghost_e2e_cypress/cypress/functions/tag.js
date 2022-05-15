@@ -51,19 +51,13 @@ const verifyTagCreated = function (cy, tagTitle) {
     let isMostrar = true;
     let i = 2;
     while (isMostrar) {
-        let element = cy.xpath('/html/body/div[2]/div/main/section/section/ol/li[' + i +']/a[1]/h3');
-        let tagFlag = element.children[0].innerText.includes();
-        if (element.length > 0) {
-            let tagFlag = element[0].getText();
-            if (tagFlag == tagTitle) {
+        let element = cy.xpath('/html/body/div[2]/div/main/section/section/ol/li[' + i + ']/a[1]/h3');
+        if (element.find('h3').contains(tagTitle)) {
                 isMostrar = false;
-                return element.should('eq', tagTitle);
+                return element.find('h3').contains(tagTitle).should('eq', tagTitle);
             } else {
                 i++;
             }
-        } else {
-            return tagFlag.should('not.eq', tagTitle);
-        }
     }
 };
 
@@ -100,7 +94,7 @@ const verifyDeletedTag = function (cy, tagTitle) {
     let isMostrar = true;
     let i = 2;
     while (isMostrar) {
-        let element = cy.xpath('/html/body/div[2]/div/main/section/section/ol/li[' + i +']/a[1]/h3');
+        let element = cy.xpath('/html/body/div[2]/div/main/section/section/ol/li[' + i + ']/a[1]/h3');
         if (element.length > 0) {
             let tagFlag = element[0].getText();
             if (tagFlag == tagTitle) {
@@ -117,17 +111,17 @@ const verifyDeletedTag = function (cy, tagTitle) {
 
 
 module.exports = {
-    tagMain : tagMain,
-    tagNew : tagNew,
-    tagSave : tagSave,
-    tagFind : tagFind,
-    tagError : tagError,
-    tagFirstElement : tagFirstElement,
-    tagNameNotEmpty : tagNameNotEmpty,
-    tagTypeTitle : tagTypeTitle,
-    verifyTagCreated : verifyTagCreated,
-    selectTagCreated : selectTagCreated,
-    deleteTagButton : deleteTagButton,
-    deleteTagButtonConfirm : deleteTagButtonConfirm,
-    verifyDeletedTag : verifyDeletedTag
+    tagMain: tagMain,
+    tagNew: tagNew,
+    tagSave: tagSave,
+    tagFind: tagFind,
+    tagError: tagError,
+    tagFirstElement: tagFirstElement,
+    tagNameNotEmpty: tagNameNotEmpty,
+    tagTypeTitle: tagTypeTitle,
+    verifyTagCreated: verifyTagCreated,
+    selectTagCreated: selectTagCreated,
+    deleteTagButton: deleteTagButton,
+    deleteTagButtonConfirm: deleteTagButtonConfirm,
+    verifyDeletedTag: verifyDeletedTag
 }
