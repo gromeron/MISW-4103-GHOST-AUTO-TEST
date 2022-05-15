@@ -156,3 +156,5 @@ reports/
 
 1-ghost-local/content/data/ghost-local.db
 .db
+
+/1-ghost-local/
