@@ -157,4 +157,5 @@ reports/
 1-ghost-local/content/data/ghost-local.db
 .db
 
-/1-ghost-local/
+1-ghost-local/3.41.1
+1-ghost-local/4.44.0
