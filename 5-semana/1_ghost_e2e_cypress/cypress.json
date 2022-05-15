@@ -1,5 +1,5 @@
 {
-    "baseUrl": "http://localhost:2368/ghost/#/signin",
+    "baseUrl": "http://localhost:2368/ghost/",
     "env": {
         "siteTitle": "TFM Soluciones",
         "fullName": "Gustavo Romero",

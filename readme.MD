@@ -77,6 +77,17 @@ Se ejecuta el set de pruebas con
 ```bash
 cypress run
 ```
+En caso de requerir correr las pruebas por consola se puede hacer directamente desde la carpeta `/5-semana/1_ghost_e2e_cypress/`con
+
+```bash
+cypress run --headless --browser chrome
+```
+
+Y para correr solamente una prueba en particular
+
+```bash
+cypress run --headless --browser chrome --spec cypress/integration/4_e2e-tag.spec.js
+```
 
 ## 3. Instalación y ejecución de kraken
 
@@ -111,7 +122,7 @@ En caso de tener un error se debe instalar el ADB, para cada SO
     sudo apt-get install android-tools-adb
     ```
 
-Finalmente, los diferentes tipos de pruebas estan en varios archivos `.feature` los cuales estan renombrados como `.nofeature` y solamente uno de ellos se ejecuta y es el que tenga la extensión `.feature`
+Finalmente, los diferentes tipos de pruebas estan en varios archivos `.feature` los cuales estan renombrados como `.donefeature` y solamente uno de ellos se ejecuta y es el que tenga la extensión `.feature`
 # Entrega semana 5: Testing E2E
 
 Las herramientas escogidas por el equipo para realizar el testing E2E fueron Cypress y Kraken. Los scripts y archivos necesarios para ejecutar las pruebas de Cypres estan en la ruta /5-semana/1_ghost_e2e_cypress y los scripts y archivos necesarios para ejecutar las pruebas de Kraken estan en la ruta /5-semana/2_ghost_e2e_kraken.
@@ -152,3 +163,6 @@ Las herramientas escogidas por el equipo para realizar el testing E2E fueron Cyp
 |es20|Actualizar perfil - Cambiar información Full Name, Slug y Email|FN05|
 
 Comparativo de herramientas de testing E2E utilizadas: https://github.com/gromeron/MISW-4103-Ghost-Auto-Test/wiki/Comparacion
+
+
+## Entrega Semana 6 - Pruebas VRT
