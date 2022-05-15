@@ -21,7 +21,7 @@ describe("FN02 - Tags", () => {
         cy.wait(3000);
     });
 
-    /* it("13. Usuario logueado - Crear tag nuevo - Sin información", () => {
+    it("13. Usuario logueado - Crear tag nuevo - Sin información", () => {
         cy.screenshot("Tag/Escenario13_1");
         tag.tagMain(cy);
         cy.screenshot("Tag/Escenario13_2");
@@ -59,7 +59,7 @@ describe("FN02 - Tags", () => {
         cy.screenshot("Tag/Escenario15_6");
         tag.verifyTagCreated(cy, tagTitle);
         cy.screenshot("Tag/Escenario15_7");
-    }); */
+    });
 
     it("16. Usuario logueado - Crear tag nuevo - Con titulo - Grabar - Verificar tag creado en la lista - Seleccionar tag recientemente creado - Borrar tag - Verificar que el tag haya sido borrado", () => {
         let tagTitle = faker.company.companyName();
@@ -78,14 +78,13 @@ describe("FN02 - Tags", () => {
         tag.verifyTagCreated(cy, tagTitle);
         cy.wait(3000);
         cy.screenshot("Tag/Escenario15_7");
-        /* tag.selectTagCreated(cy, tagTitle)
+        tag.selectTagCreated(cy, tagTitle)
         cy.screenshot("Tag/Escenario15_8");
         tag.deleteTagButton(cy);
         cy.screenshot("Tag/Escenario15_9");
         tag.deleteTagButtonConfirm(cy);
         cy.screenshot("Tag/Escenario15_10");
         tag.verifyDeletedTag(cy, tagTitle);
-        cy.screenshot("Tag/Escenario15_11"); */
-
+        cy.screenshot("Tag/Escenario15_11");
     });
 });

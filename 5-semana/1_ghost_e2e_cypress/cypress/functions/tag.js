@@ -48,65 +48,51 @@ const tagTypeTitle = function (cy, tagTitle) {
 };
 
 const verifyTagCreated = function (cy, tagTitle) {
-    let isMostrar = true;
-    let i = 2;
-    while (isMostrar) {
-        let element = cy.xpath('/html/body/div[2]/div/main/section/section/ol/li[' + i + ']/a[1]/h3');
-        if (element.find('h3').contains(tagTitle)) {
-                isMostrar = false;
-                return element.find('h3').contains(tagTitle).should('eq', tagTitle);
-            } else {
-                i++;
+    cy.get('.content-list h3')
+        .each(($h3) => {
+            if ($h3.length > 0) {
+                if ($h3[0].innerText === tagTitle) {
+                    expect($h3[0].innerText).to.equal(tagTitle);
+                }
             }
-    }
+        });
 };
 
 const selectTagCreated = function (cy, tagTitle) {
-    let isMostrar = true;
-    let i = 2;
-    while (isMostrar) {
-        let element = cy.xpath('/html/body/div[2]/div/main/section/section/ol/li[' + i + ']/a[1]/h3');
-        if (element.length > 0) {
-            let tagFlag = element[0].getText();
-            if (tagFlag == tagTitle) {
-                isMostrar = false;
-                return element[0].click();
-            } else {
-                i++;
+    cy.get('.content-list h3')
+        .each(($h3) => {
+            if ($h3.length > 0) {
+                if ($h3[0].innerText === tagTitle) {
+                    $h3.click();
+                }
             }
-        } else {
-            return element.should('not.eq', tagTitle);
-        }
-    }
+        });
 };
 
 const deleteTagButton = function (cy) {
     let element = cy.get('.gh-btn.gh-btn-red.gh-btn-icon.mb15');
-    return element.click();
+    return element.first().click();
 };
 
 const deleteTagButtonConfirm = function (cy) {
-    let element = cy.xpath('.gh-btn.gh-btn-red.gh-btn-icon.ember-view');
-    return element.click();
+    cy.wait(2000);
+    let element = cy.get('.gh-btn.gh-btn-red.gh-btn-icon.ember-view');
+    return element.first().click();
 };
 
 const verifyDeletedTag = function (cy, tagTitle) {
-    let isMostrar = true;
-    let i = 2;
-    while (isMostrar) {
-        let element = cy.xpath('/html/body/div[2]/div/main/section/section/ol/li[' + i + ']/a[1]/h3');
-        if (element.length > 0) {
-            let tagFlag = element[0].getText();
-            if (tagFlag == tagTitle) {
-                isMostrar = false;
-                return element.should('eq', tagTitle);
-            } else {
-                i++;
+    cy.wait(2000);
+    let count = 0;
+    cy.get('.content-list h3')
+        .each(($h3) => {
+            if ($h3.length > 0) {
+                if ($h3[0].innerText === tagTitle) {
+                    count++;
+                }
             }
-        } else {
-            return element.should('not.eq', tagTitle);
-        }
-    }
+        });
+    expect(count).to.equal(0);
+    cy.wait(2000);
 };
 
 
