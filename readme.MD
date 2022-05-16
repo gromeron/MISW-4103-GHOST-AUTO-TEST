@@ -166,3 +166,5 @@ Comparativo de herramientas de testing E2E utilizadas: https://github.com/gromer
 
 
 ## Entrega Semana 6 - Pruebas VRT
+
+Se corrieron los escenarios de pruebas con las dos herramientas en las siguientes versiones de Ghost: 3.44 y 4.44.0 con el objetivo de identificar regresiones entre los features de las dos versiones.
