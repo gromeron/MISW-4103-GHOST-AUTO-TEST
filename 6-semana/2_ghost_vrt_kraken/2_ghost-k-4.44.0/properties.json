@@ -1,0 +1,15 @@
+{
+    "LOGINURL": "http://localhost:3002/ghost/#/signin",
+    "USERNAME": "g.romeron2@uniandes.edu.co",
+    "NEWEMAIL": "h.isaac@uniandes.edu.co",
+    "PASSWORD": "1234567890!",
+    "NEWPASSWORD": "1234567898!",
+    "WRONGUSERNAME": "correoInvalido@correo.com",
+    "WRONGPASSWORD": "passwordInvalido",
+    "TAGTITLE": "Titulo de tag de prueba",
+    "PAGETITLE": "Titulo de pagina de prueba #",
+    "PAGETITLEDRAFT": "Titulo de pagina de prueba #",
+    "PAGEDESCRIPTION": "Descripcion de pagina de prueba #",
+    "NEWFULLNAME": "Full name de prueba",
+    "NEWSLUGNAME": "New slug de prueba"
+}
