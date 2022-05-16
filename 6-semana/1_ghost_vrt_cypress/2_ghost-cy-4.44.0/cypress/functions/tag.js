@@ -10,7 +10,7 @@ const tagNew = function (cy) {
 };
 
 const tagSave = function (cy) {
-    cy.get('.gh-btn.gh-btn-blue.gh-btn-icon.ember-view').first().click();
+    cy.get('.gh-btn.gh-btn-primary.gh-btn-icon.ember-view').first().click();
     cy.wait(1000);
 };
 
@@ -28,8 +28,8 @@ const tagFind = function (cy, tagTitle, tagSave) {
 };
 
 const tagError = function (cy) {
-    let element = cy.xpath('/html/body/div[2]/div/main/section/form/div/div[1]/div[1]/div[1]/div[1]/span/p[1]');
-    return element.should('contain', 'You must specify a name for the tag');
+    let element = cy.get(".gh-btn.gh-btn-primary.gh-btn-icon.gh-btn-red.ember-view");
+    return element.should('have.length', 1);
 };
 
 const tagFirstElement = function (cy) {
@@ -43,7 +43,7 @@ const tagNameNotEmpty = function (cy) {
 };
 
 const tagTypeTitle = function (cy, tagTitle) {
-    let element = cy.xpath('/html/body/div[2]/div/main/section/form/div/div[1]/div[1]/div[1]/div[1]/input');
+    let element = cy.get('#tag-name');
     return element.type(tagTitle);
 };
 
@@ -70,7 +70,7 @@ const selectTagCreated = function (cy, tagTitle) {
 };
 
 const deleteTagButton = function (cy) {
-    let element = cy.get('.gh-btn.gh-btn-red.gh-btn-icon.mb15');
+    let element = cy.get('.gh-btn.gh-btn-red.gh-btn-icon');
     return element.first().click();
 };
 

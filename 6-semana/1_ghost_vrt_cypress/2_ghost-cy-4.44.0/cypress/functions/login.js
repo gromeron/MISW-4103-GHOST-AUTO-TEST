@@ -1,15 +1,8 @@
 const loginRegistrar = function (cy, email, password) {
-    cy.get('#ember8').type(email);
-    cy.get('#ember10').type(password);
-    cy.get('#ember12').click();
-    cy.get('.gh-user-email').then(($elm) => {
-        if ($elm.length > 0) {
-            if($elm[0].innerText == email) {
-                expect($elm[0].innerText).to.equal(email);
-            }
-        }
-    }
-)};
+    cy.get(".email.ember-text-field.gh-input.ember-view").type(email);
+    cy.get(".password.ember-text-field.gh-input.ember-view").type(password);
+    cy.get(".login.gh-btn").click();
+};
 
 const setUpNewUser = function (cy, siteTitle, fullName, email, password) {
     cy.xpath('/html/body/div[2]/div/main/div/div/section/a/span').click();
