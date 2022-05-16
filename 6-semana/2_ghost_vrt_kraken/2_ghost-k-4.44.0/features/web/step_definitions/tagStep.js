@@ -1,5 +1,5 @@
 const { When, Then } = require("@cucumber/cucumber");
-const { expect } = require('chai').expect;
+const expect = require('chai').expect;
 const assert = require('assert');
 const { faker } = require('@faker-js/faker');
 
@@ -24,7 +24,7 @@ When('I type a tag title', async function () {
 });
 
 When('I click on save tag', async function () {
-    let element = await this.driver.$('.gh-btn.gh-btn-blue.gh-btn-icon.ember-view');
+    let element = await this.driver.$('.gh-btn.gh-btn-primary.gh-btn-icon.ember-view');
     return await element.click();
 });
 
@@ -35,7 +35,7 @@ When('I scroll to first tag', async function () {
 });
 
 Then('I expect an error message', async function () {
-    let element = await this.driver.$$('.gh-btn.gh-btn-blue.gh-btn-icon.gh-btn-red.ember-view');
+    let element = await this.driver.$$('.gh-btn.gh-btn-primary.gh-btn-icon.gh-btn-red.ember-view');
     expect(element.length).to.equal(1);
 });
 
@@ -57,7 +57,7 @@ Then('The tag name should not be empty', async function () {
 });
 
 When('I click on delete tag button', async function () {
-    let element = await this.driver.$(".gh-btn.gh-btn-red.gh-btn-icon.mb15");
+    let element = await this.driver.$(".gh-btn.gh-btn-red.gh-btn-icon");
     return await element.click();
 });
 
