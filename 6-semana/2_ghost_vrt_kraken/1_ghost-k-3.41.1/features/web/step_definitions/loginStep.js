@@ -28,7 +28,7 @@ Then('I expect an error message login', async function () {
   expect(element.length).to.equal(1);
 });
 
-Then('Then I expect to be logged in', async function () {
+Then('I expect to be logged in', async function () {
   let element = await this.driver.$$(".gh-nav-list.gh-nav-settings");
   expect(element.length).to.equal(1);
 });
