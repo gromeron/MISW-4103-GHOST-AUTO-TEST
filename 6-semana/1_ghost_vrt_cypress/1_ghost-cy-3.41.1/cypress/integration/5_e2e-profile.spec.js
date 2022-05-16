@@ -1,14 +1,23 @@
+const login = require('../functions/login');
 const { faker } = require('@faker-js/faker');
 
-context("Actions", () => {
+describe("FN05 - Profile", () => {
 
     beforeEach(() => {
-        cy.visit("http://localhost:2368/ghost/#/signin");
-        cy.get(".email.ember-text-field.gh-input.ember-view").type("g.romeron2@uniandes.edu.co", { force: true });
-        cy.get(".password.ember-text-field.gh-input.ember-view").type("1234567890!", { force: true });
-        cy.get(".login.gh-btn.gh-btn-blue.gh-btn-block.gh-btn-icon.ember-view").click();
+        cy.clearCookies();
+        cy.visit('http://localhost:2368/ghost/');
+        if (!cy.url('http://localhost:2368/ghost/#/signin')) {
+            cy.get('main').then(($m) => {
+                if ($m.find('form')) {
+                    if ($m.find('form[id="setup"]')) {
+                        login.setUpNewUser(cy, Cypress.env('siteTitle'), Cypress.env('fullName'), Cypress.env('user1Email'), Cypress.env('user1Password'));
+                    }
+                }
+            })
+        } else {
+            login.loginRegistrar(cy, Cypress.env('user1Email'), Cypress.env('user1Password'));
+        }
         cy.wait(3000);
-        cy.url().should("eq", "http://localhost:2368/ghost/#/site");
     });
 
     it("17. Actualizar perfil datos básicos (nombre, slug, email) ", () => {

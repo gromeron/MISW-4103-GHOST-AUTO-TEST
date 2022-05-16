@@ -2,14 +2,12 @@ const login = require('../functions/login');
 const { faker } = require('@faker-js/faker');
 const tag = require('../functions/tag');
 
-describe("FN02 - Tags", () => {
+describe("FN04 - Tags", () => {
 
     beforeEach(() => {
         cy.clearCookies();
         cy.visit('http://localhost:2368/ghost/');
-        if (cy.url('http://localhost:2368/ghost/#/signin')) {
-            login.loginRegistrar(cy, Cypress.env('user1Email'), Cypress.env('user1Password'));
-        } else {
+        if (!cy.url('http://localhost:2368/ghost/#/signin')) {
             cy.get('main').then(($m) => {
                 if ($m.find('form')) {
                     if ($m.find('form[id="setup"]')) {
@@ -17,6 +15,8 @@ describe("FN02 - Tags", () => {
                     }
                 }
             })
+        } else {
+            login.loginRegistrar(cy, Cypress.env('user1Email'), Cypress.env('user1Password'));
         }
         cy.wait(3000);
     });
@@ -45,7 +45,7 @@ describe("FN02 - Tags", () => {
 
     it("15. Usuario logueado - Crear tag nuevo - Con titulo - Grabar - Verificar que se haya creado el tag", () => {
         let tagTitle = faker.company.companyName();
-        
+
         cy.screenshot("Tag/Escenario15_1");
         tag.tagMain(cy);
         cy.screenshot("Tag/Escenario15_2");

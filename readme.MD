@@ -24,15 +24,15 @@ ghost start
 En caso de presentar errores proceder con la instalación de la versión del cypress utilizada en este proyecto, mediante la instrucción desde la carpeta del proyecto clonado del repositorio con
 
 ```bash
-ghost install 3.41.1 --local --force
-```
-
-```bash
 npm install -g ghost-cli@latest
 ```
 
 ```bash
 npm install sqlite3 --save
+```
+
+```bash
+ghost install 3.41.1 --local --force
 ```
 
 Si esto no funciona, se puede borrar el contenido de la carpeta local y ejecutar desde esta el siguiente comando

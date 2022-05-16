@@ -1,13 +1,25 @@
-const {faker} = require("@faker-js/faker");
-context("Actions", () => {
+const login = require('../functions/login');
+const { faker } = require('@faker-js/faker');
+
+describe("FN03 - Page", () => {
+
     beforeEach(() => {
-        cy.visit("http://localhost:2368/ghost/#/signin");
-        cy.get(".email.ember-text-field.gh-input.ember-view").type("g.romeron2@uniandes.edu.co", { force: true });
-        cy.get(".password.ember-text-field.gh-input.ember-view").type("1234567890!", { force: true });
-        cy.get(".login.gh-btn.gh-btn-blue.gh-btn-block.gh-btn-icon.ember-view").click();
+        cy.clearCookies();
+        cy.visit('http://localhost:2368/ghost/');
+        if (!cy.url('http://localhost:2368/ghost/#/signin')) {
+            cy.get('main').then(($m) => {
+                if ($m.find('form')) {
+                    if ($m.find('form[id="setup"]')) {
+                        login.setUpNewUser(cy, Cypress.env('siteTitle'), Cypress.env('fullName'), Cypress.env('user1Email'), Cypress.env('user1Password'));
+                    }
+                }
+            })
+        } else {
+            login.loginRegistrar(cy, Cypress.env('user1Email'), Cypress.env('user1Password'));
+        }
         cy.wait(3000);
-        cy.url().should("eq", "http://localhost:2368/ghost/#/site");
     });
+
 
     it("09. Usuario logueado - Crear página con título - Publicar página", () => {
         var pageTitle = faker.animal.fish();
@@ -24,7 +36,7 @@ context("Actions", () => {
         cy.get(".koenig-editor__editor.__mobiledoc-editor").type(postBody, { force: true });
         cy.get(".gh-publishmenu.ember-view").click();
         cy.wait(1000);
-        cy.screenshot("Post/Escenario9_2");
+        cy.screenshot("Page/Escenario9_2");
         cy.get(".gh-publishmenu-button").click();
         cy.wait(2000);
         cy.get(".gh-notification.gh-notification-passive.ember-view").should('have.length', 1);
