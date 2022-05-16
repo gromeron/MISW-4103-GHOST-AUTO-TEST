@@ -165,6 +165,7 @@ dist
 #.png
 #reports/
 cypress/videos
+6-semana/2_ghost_vrt_kraken/1_ghost-k-3.41.1/reports
 
 # Ghost local
 1-ghost-local/content/data/ghost-local.db
