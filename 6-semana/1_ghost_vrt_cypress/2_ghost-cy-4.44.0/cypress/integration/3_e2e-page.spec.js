@@ -23,7 +23,7 @@ context("Actions", () => {
         cy.get(".koenig-editor__editor.__mobiledoc-editor").type(postBody, { force: true });
         cy.get(".gh-publishmenu.ember-view").click();
         cy.wait(1000);
-        cy.screenshot("Post/Escenario9_2");
+        cy.screenshot("Page/Escenario9_2");
         cy.get(".gh-publishmenu-button").click();
         cy.wait(2000);
         cy.get(".gh-notification.gh-notification-passive.ember-view").should('have.length', 1);

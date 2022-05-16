@@ -166,3 +166,5 @@ Comparativo de herramientas de testing E2E utilizadas: https://github.com/gromer
 
 
 ## Entrega Semana 6 - Pruebas VRT
+
+Se corrieron los escenarios de pruebas con Cypress y Kraken en las siguientes versiones de Ghost: 3.44 y 4.44.0 con el objetivo de identificar regresiones entre los features de las dos versiones. Para ejecutar las pruebas en la version más reciente de Ghost, se requirió hacer cambios al codigo de las pruebas (detalle aquí https://github.com/gromeron/MISW-4103-Ghost-Auto-Test/wiki/Impacto-nueva-versi%C3%B3n).
