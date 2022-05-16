@@ -19,4 +19,5 @@ Feature: Crear tags
         When I click on save tag
         And I wait for 1 seconds
         When I go to tags
+        And I wait for 3 seconds
         Then Verify tag recently created
