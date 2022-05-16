@@ -23,6 +23,21 @@ lerna-debug.log*
 5-semana/2_ghost_e2e_kraken/NOTICE.txt
 5-semana/2_ghost_e2e_kraken/source.properties
 
+6-semana/2_ghost_e2e_kraken/adb.exe
+6-semana/2_ghost_e2e_kraken/AdbWinApi.dll
+6-semana/2_ghost_e2e_kraken/AdbWinUsbApi.dll
+6-semana/2_ghost_e2e_kraken/dmtracedump.exe
+6-semana/2_ghost_e2e_kraken/etc1tool.exe
+6-semana/2_ghost_e2e_kraken/fastboot.exe
+6-semana/2_ghost_e2e_kraken/hprof-conv.exe
+6-semana/2_ghost_e2e_kraken/libwinpthread-1.dll
+6-semana/2_ghost_e2e_kraken/make_f2fs.exe
+6-semana/2_ghost_e2e_kraken/make_f2fs_casefold.exe
+6-semana/2_ghost_e2e_kraken/mke2fs.conf
+6-semana/2_ghost_e2e_kraken/mke2fs.exe
+6-semana/2_ghost_e2e_kraken/NOTICE.txt
+6-semana/2_ghost_e2e_kraken/source.properties
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
