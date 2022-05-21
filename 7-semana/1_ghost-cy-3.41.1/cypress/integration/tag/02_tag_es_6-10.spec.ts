@@ -5,15 +5,15 @@ import { Tag } from '../../pageObject/tag';
 const login = new Login;
 const tag = new Tag;
 
-describe('Tag Escenarios 1 - 5', () => {
+describe('Tag Escenarios 6 - 10', () => {
 
     beforeEach(() => {
         login.loginRegistrar(Cypress.env('user1Email'), Cypress.env('user1Password'));
     });
 
-    it('31- Crear tag con nombre y después filtrar por tags públicos', () => {
-        
-        faker.seed(4031);
+    it('36- Crear tag: con nombre y sin descripcion', () => {
+
+        faker.seed(4036);
 
         let tagName = faker.company.companyName();
 
@@ -22,53 +22,53 @@ describe('Tag Escenarios 1 - 5', () => {
         tag.TypeTagName(tagName);
         tag.tagSave();
         tag.tagMain();
-        tag.selectPublicTags();
         tag.verifyTagCreated(tagName);
     });
 
-    it('32- Crear tag con nombre y después filtrar por tags internos', () => {
-        
-        faker.seed(4032);
+    it('37- Crear tag: solo con slug', () => {
 
-        let tagName = faker.company.companyName();
+        faker.seed(4037);
+
+        let tagSlug = faker.commerce.productAdjective();
 
         tag.tagMain();
         tag.tagNew();
-        tag.TypeTagName(tagName);
+        tag.typeTagSlug(tagSlug);
         tag.tagSave();
-        tag.tagMain();
-        tag.selectInternalTags();
-        tag.verifyEmptyTagList();
+        tag.tagError
     });
 
-    it('33- Crear tag solo con descripción y verificar si produce error', () => {
-        
-        faker.seed(4033);
+    it('38- Crear tag con nombre y con descripción', () => {
 
+        faker.seed(4038);
+
+        let tagName = faker.company.companyName();
         let tagDescription = faker.lorem.sentence(10);
 
         tag.tagMain();
         tag.tagNew();
+        tag.TypeTagName(tagName);
         tag.TypeTagDescription(tagDescription);
         tag.tagSave();
-        tag.tagError();
+        tag.tagMain();
+        tag.verifyTagCreated(tagName);
     });
 
-    it('34- Buscar último tag creado mediante la opción de búsqueda global', () => {
+    it('39- Crear tag con nombre y descripción; editar tag recién creado sin nombre y sin descripción', () => {
 
-        faker.seed(4099);
+        faker.seed(4039);
 
         let tagName = faker.company.companyName();
-
-        tag.tagMain();
-        tag.findTagByGlobalSearch(tagName);
-    })
-
-    it('35- Crear tag: sin nombre y sin descripcion', () => {
+        let tagDescription = faker.lorem.sentence(10);
 
         tag.tagMain();
         tag.tagNew();
+        tag.TypeTagName(tagName);
+        tag.TypeTagDescription(tagDescription);
         tag.tagSave();
-        tag.tagError()
-    })
+        tag.tagMain();
+        tag.verifyTagCreated(tagName);
+        
+    });
+
 });
