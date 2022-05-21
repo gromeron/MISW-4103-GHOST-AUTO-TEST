@@ -182,3 +182,6 @@ cypress/videos
 6-semana/2_ghost_vrt_kraken/1_ghost-k-3.41.1/reports
 6-semana/1_ghost_vrt_cypress/1_ghost-cy-3.41.1/
 
+7-semana/1_ghost-cy-3.41.1/cypress/screenshots
+7-semana/1_ghost-cy-3.41.1/cypress/videos
+
