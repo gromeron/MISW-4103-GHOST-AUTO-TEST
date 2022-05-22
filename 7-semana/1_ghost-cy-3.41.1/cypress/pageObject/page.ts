@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 export class Page {
 
     constructor() {}
@@ -48,16 +50,18 @@ export class Page {
         cy.wait(3000);
     };
 
+
+
     verifyPageList(pageTitle: string, pageStatus: string) {
         var countPages = 0;
         var countStatusPage = 0;
         var indexPage = 0;
-        cy.get('main').scrollTo('bottom')
-        cy.wait(2000);
-        cy.get('main').scrollTo('bottom')
-        cy.wait(2000);
-        cy.get('main').scrollTo('bottom')
-        cy.wait(2000);
+        cy.get('main').scrollTo('bottom', {ensureScrollable: false});
+        cy.wait(1000);
+        cy.get('main').scrollTo('bottom', {ensureScrollable: false});
+        cy.wait(1000);
+        cy.get('main').scrollTo('bottom', {ensureScrollable: false});
+        cy.wait(1000);
         cy.get('.content-list h3')
             .each(($h3) => {
                 countPages++;
@@ -79,7 +83,17 @@ export class Page {
             });
     };
 
+    verifyPageIsDeleted(pageTitle: string) {
+        cy.get('.content-list h3').contains(pageTitle).should('have.length', 0);
+    };
+
     openEditPage(pageTitle: string){
+        cy.get('main').scrollTo('bottom', {ensureScrollable: false});
+        cy.wait(1000);
+        cy.get('main').scrollTo('bottom', {ensureScrollable: false});
+        cy.wait(1000);
+        cy.get('main').scrollTo('bottom', {ensureScrollable: false});
+        cy.wait(1000);
         cy.get('.content-list h3').contains(pageTitle).first().click();
         cy.wait(1000);
     };
@@ -88,6 +102,11 @@ export class Page {
       cy.get(".post-settings").first().click();
       cy.wait(1000);
     };
+
+    closePageSettings(){
+        cy.get(".close.settings-menu-header-action").first().click();
+        cy.wait(1000);
+    }
 
     pageAddPlus(){
         cy.get('.koenig-plus-menu-button').first().click();
@@ -112,6 +131,7 @@ export class Page {
     pageTypeCodeHtml(pageCodeHtml: string){
         let element = cy.get('.CodeMirror textarea');
         return element.type(pageCodeHtml, { force: true });
+
     }
 
     pagePlusTypeLinkYoutube(pageLinkYoutube: string){
@@ -124,5 +144,168 @@ export class Page {
         let element2 = cy.get('.koenig-text-replacement-html-input__editor.__mobiledoc-editor');
         return element2.type(pagePlusEmail, { force: true });
     }
+
+    addDayScheduledPage(numberDays: number) {
+        let newDate = dayjs().add(numberDays, 'day').format('YYYY-MM-DD');
+        let element = cy.get('.gh-publishmenu-dropdown .gh-date-time-picker .gh-date-time-picker-date input');
+        element.clear();
+        element.type(String(newDate), {force: true});
+        cy.wait(1000);
+    }
+
+    addMonthsScheduledPage(numberMonths: number) {
+        let newDate = dayjs().add(numberMonths, 'month').format('YYYY-MM-DD');
+        let element = cy.get('.gh-publishmenu-dropdown .gh-date-time-picker .gh-date-time-picker-date input');
+        element.clear();
+        element.type(String(newDate), {force: true});
+        cy.wait(1000);
+    }
+
+    addYearsScheduledPage(numberYears: number) {
+        let newDate = dayjs().add(numberYears, 'year').format('YYYY-MM-DD');
+        let element = cy.get('.gh-publishmenu-dropdown .gh-date-time-picker .gh-date-time-picker-date input');
+        element.clear();
+        element.type(String(newDate), {force: true});
+        cy.wait(1000);
+    }
+
+    addTagsPage(){
+        cy.get("#tag-input .ember-power-select-status-icon").first().click();
+        cy.wait(1000);
+    }
+
+    selectTagToPage(tagName: string){
+        cy.contains(tagName).click();
+        cy.wait(1000);
+    }
+
+
+    typePageUrlSettings(url: any){
+        let element = cy.get("#url");
+        element.clear();
+        element.type(url, { force: true });
+        cy.wait(1000);
+    }
+
+
+
+    typeExcerptPage(excerptPage: string){
+        let element = cy.get("#custom-excerpt");
+        element.clear();
+        element.type(excerptPage, { force: true });
+        cy.wait(1000);
+    }
+
+    selectFeatureThisPage(){
+        cy.get(".gh-input.post-settings-featured").first().click({ force: true });
+        cy.wait(1000);
+    }
+
+    selectTwitterCardPage(){
+        cy.get(".settings-menu-content li").contains("Twitter card").first().click({ force: true });
+        cy.wait(1000);
+    }
+
+    selectMetaDataPage(){
+        cy.get(".settings-menu-content li").contains("Meta data").first().click({ force: true });
+        cy.wait(1000);
+    }
+
+    goBackPageSettings(){
+        cy.get(".back.settings-menu-header-action").first().click({ force: true });
+        cy.wait(1000);
+    }
+
+    pageTypeTwitterTitle(twitterTitle: string){
+        let element2 = cy.get('#twitter-title');
+        return element2.type(twitterTitle, { force: true });
+    }
+
+    pageTypeTwitterDescription(twitterDescription: string){
+        let element2 = cy.get('#twitter-description');
+        return element2.type(twitterDescription, { force: true });
+    }
+
+    pageTypeMetaTitle(metaTitle: string){
+        let element2 = cy.get('#meta-title');
+        return element2.type(metaTitle, { force: true });
+    }
+
+    pageTypeMetaDescription(metaDescription: string){
+        let element2 = cy.get('#meta-description');
+        return element2.type(metaDescription, { force: true });
+    }
+
+    pageTypeMetaCanonicalUrl(canonicalUrl: any){
+        let element2 = cy.get('.post-setting-canonicalUrl');
+        return element2.type(canonicalUrl, { force: true });
+    }
+
+    deleteButtonPage(){
+        cy.get(".settings-menu-delete-button").first().click({ force: true });
+        cy.wait(1000);
+    }
+
+    deleteFinalPage(){
+        cy.get(".gh-btn.gh-btn-red.gh-btn-icon.ember-view").first().click({ force: true });
+        cy.wait(1000);
+
+    }
+
+    selectFilterTags(){
+        cy.get(".gh-contentfilter-menu.gh-contentfilter-tag").first().click();
+        cy.wait(1000);
+    }
+
+    selectFilterSortPage(){
+        cy.get(".gh-contentfilter-menu.gh-contentfilter-sort").first().click();
+        cy.wait(1000);
+    }
+
+    selectFilterAutores(){
+        cy.get(".gh-contentfilter-menu.gh-contentfilter-author").first().click();
+        cy.wait(1000);
+    }
+
+    selectFilterTypePage(){
+        cy.get(".gh-contentfilter-menu.gh-contentfilter-type").first().click();
+        cy.wait(1000);
+    }
+
+    selectTagInFilter(tagName: string){
+        cy.get(".gh-contentfilter-menu-dropdown li").contains(tagName).first().click();
+        cy.wait(1000);
+    }
+
+    selectDraftTypePageFilter(){
+        cy.get(".gh-contentfilter-menu-dropdown li").contains("Draft pages").first().click();
+        cy.wait(1000);
+    }
+
+    selectScheduledTypePageFilter(){
+        cy.get(".gh-contentfilter-menu-dropdown li").contains("Scheduled pages").first().click();
+        cy.wait(1000);
+    }
+
+    selectLastTagInFilter(){
+        cy.get(".gh-contentfilter-menu-dropdown li").last().click();
+        cy.wait(1000);
+    }
+
+    selectLastAuthorInFilter(){
+        cy.get(".gh-contentfilter-menu-dropdown li").last().click();
+        cy.wait(1000);
+    }
+
+    selectLastTypePageInFilter(){
+        cy.get(".gh-contentfilter-menu-dropdown li").last().click();
+        cy.wait(1000);
+    }
+
+    selectLastSortPageInFilter(){
+        cy.get(".gh-contentfilter-menu-dropdown li").last().click();
+        cy.wait(1000);
+    }
+
     
 }
