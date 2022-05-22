@@ -68,19 +68,24 @@ export class Page {
                 if ($h3.length > 0) {
                     if ($h3[0].innerText === pageTitle) {
                         indexPage = countPages;
-                        expect($h3[0].innerText).to.equal(pageTitle);
+                        countStatusPage = 0;
+                        cy.get('.content-list span.nowrap')
+                            .each(($span) => {
+                                countStatusPage++;
+                                if ($span.length > 0) {
+                                    if (countStatusPage === indexPage) {
+                                        if($span[0].innerText.toUpperCase() == pageStatus){
+                                            expect($h3[0].innerText).to.equal(pageTitle);
+                                            expect($span[0].innerText.toUpperCase()).to.equal(pageStatus);
+                                        }
+                                    }
+                                }
+                            });
+
                     }
                 }
             });
-        cy.get('.content-list span.nowrap')
-            .each(($span) => {
-                countStatusPage++;
-                if ($span.length > 0) {
-                    if (countStatusPage === indexPage) {
-                        expect($span[0].innerText.toUpperCase()).to.equal(pageStatus);
-                    }
-                }
-            });
+
     };
 
     verifyPageIsDeleted(pageTitle: string) {
@@ -306,6 +311,8 @@ export class Page {
         cy.get(".gh-contentfilter-menu-dropdown li").last().click();
         cy.wait(1000);
     }
+
+
 
     
 }

@@ -8,7 +8,7 @@ const login = new Login;
 const page = new Page;
 
 
-describe('Page Escenarios 16 - 20', () => {
+describe('Page Escenarios 16 - 20 (ESTRATEGIA DE GENERACIÓN DE DATOS #3)', () => {
 
     beforeEach(() => {
         login.loginRegistrar(Cypress.env('user1Email'), Cypress.env('user1Password'));
