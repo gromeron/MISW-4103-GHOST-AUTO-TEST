@@ -7,7 +7,7 @@ const login = new Login;
 const page = new Page;
 
 
-describe('Page Escenarios 26 - 30', () => {
+describe('Page Escenarios 26 - 30 (ESTRATEGIA DE GENERACIÓN DE DATOS #3: ESCENARIO ALEATORIO)', () => {
 
     beforeEach(() => {
         login.loginRegistrar(Cypress.env('user1Email'), Cypress.env('user1Password'));
@@ -15,7 +15,7 @@ describe('Page Escenarios 26 - 30', () => {
 
 
 
-    it("26. Crear página con nombre y descripción, verificar que página quedó en estado published; filtrar páginas por filtro de tipo (escoger ultima opcion)", () => {
+    it("26. Crear página con nombre y descripción, verificar que página quedó en estado published; filtrar páginas por filtro de tipo (escoger ultima opcion). / ESCENARIO ALEATORIO", () => {
         let pageTitle = faker.company.companyName();
         let pageDescripcion = faker.lorem.paragraphs(1);
         page.pagesMain();
@@ -32,7 +32,7 @@ describe('Page Escenarios 26 - 30', () => {
     });
 
 
-    it("27. Crear página con nombre y descripción, verificar que página quedó en estado published; filtrar páginas por filtro de tipo (escoger ultima opcion)", () => {
+    it("27. Crear página con nombre y descripción, verificar que página quedó en estado published; filtrar páginas por filtro de tipo (escoger ultima opcion). / ESCENARIO ALEATORIO", () => {
         let pageTitle = faker.company.companyName();
         let pageDescripcion = faker.lorem.paragraphs(1);
         page.pagesMain();
@@ -48,7 +48,7 @@ describe('Page Escenarios 26 - 30', () => {
         page.selectLastTagInFilter();
     });
 
-    it("28. Crear página sin guardar con nombre y descripción, verificar que página quedó en estado draft; Filtrar páginas por filtro de pages(escoger opción draft pages y verificar que está en la lista)", () => {
+    it("28. Crear página sin guardar con nombre y descripción, verificar que página quedó en estado draft; Filtrar páginas por filtro de pages(escoger opción draft pages y verificar que está en la lista). / ESCENARIO ALEATORIO", () => {
         let pageTitle = faker.company.companyName();
         let pageDescripcion = faker.lorem.paragraphs(1);
         page.pagesMain();
@@ -63,7 +63,7 @@ describe('Page Escenarios 26 - 30', () => {
     });
 
 
-    it("29. Crear página programada con nombre y descripción, verificar que página quedó en estado scheduled; Filtrar páginas por filtro de pages(escoger opción scheduled pages y verificar que está en la lista)", () => {
+    it("29. Crear página programada con nombre y descripción, verificar que página quedó en estado scheduled; Filtrar páginas por filtro de pages(escoger opción scheduled pages y verificar que está en la lista). / ESCENARIO ALEATORIO", () => {
         let pageTitle = faker.company.companyName();
         let pageDescripcion = faker.lorem.paragraphs(1);
         page.pagesMain();
@@ -81,7 +81,7 @@ describe('Page Escenarios 26 - 30', () => {
     });
 
 
-    it("30. Crear página con nombre y descripción, verificar que página quedó en estado published; Ordenar páginas (escoger ultima opción)", () => {
+    it("30. Crear página con nombre y descripción, verificar que página quedó en estado published; Ordenar páginas (escoger ultima opción). / ESCENARIO ALEATORIO", () => {
         let pageTitle = faker.company.companyName();
         let pageDescripcion = faker.lorem.paragraphs(1);
         page.pagesMain();
