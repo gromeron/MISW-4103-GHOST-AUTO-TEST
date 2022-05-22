@@ -14,7 +14,7 @@ describe('Page Escenarios 6 - 10 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE
 
     it("6. Crear página sin guardar con nombre y con descripción , verificar que página quedó en estado draft, editar página-nombre y publicar (scheduled), verificar que quedó en estado scheduled. / POOL DE DATOS A-PRIORI", () => {
 
-        cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
+        cy.request(Cypress.env('pageJson')).then((response) => {
             let datos = response.body;
             let pageTitle = datos[Math.floor(Math.random()*datos.length)]["titulo"];
             let pageTitle2 = datos[Math.floor(Math.random()*datos.length)]["titulo2"];
@@ -40,7 +40,7 @@ describe('Page Escenarios 6 - 10 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE
 
     it("7. Crear página con nombre y descripción, verificar que página quedó en estado published, editar página-nombre y publicar (scheduled), verificar que quedó en estado scheduled. / POOL DE DATOS A-PRIORI", () => {
 
-        cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
+        cy.request(Cypress.env('pageJson')).then((response) => {
             let datos = response.body;
             let pageTitle = datos[Math.floor(Math.random()*datos.length)]["titulo"];
             let pageTitle2 = datos[Math.floor(Math.random()*datos.length)]["titulo2"];
@@ -70,7 +70,7 @@ describe('Page Escenarios 6 - 10 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE
 
     it("8. Crear página con nombre y con opción (+) Html Code, verificar que página quedó en estado published. / POOL DE DATOS A-PRIORI", () => {
 
-        cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
+        cy.request(Cypress.env('pageJson')).then((response) => {
             let datos = response.body;
             let pageTitle = datos[Math.floor(Math.random()*datos.length)]["titulo"];
             let pageDescriptionHtml = `<h1>${pageTitle}</h1><p>${datos[Math.floor(Math.random()*datos.length)]["descripcion1"]}</p>`;
@@ -94,7 +94,7 @@ describe('Page Escenarios 6 - 10 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE
 
     it("9. Crear página con nombre y con opción (+) Email, verificar que página quedó en estado published. / POOL DE DATOS A-PRIORI", () => {
 
-        cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
+        cy.request(Cypress.env('pageJson')).then((response) => {
             let datos = response.body;
             let pageTitle = datos[Math.floor(Math.random()*datos.length)]["titulo"];
             let pageEmail = datos[Math.floor(Math.random()*datos.length)]["email"];
@@ -117,7 +117,7 @@ describe('Page Escenarios 6 - 10 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE
 
     it("10. Crear página con nombre, descripción y con opción (+) Youtube (pegar link), verificar que página quedó en estado published. / POOL DE DATOS A-PRIORI", () => {
 
-        cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
+        cy.request(Cypress.env('pageJson')).then((response) => {
             let datos = response.body;
             let pageTitle = datos[Math.floor(Math.random()*datos.length)]["titulo"];
             let pageUrlYoutube = Cypress.env('youtubeUrl');

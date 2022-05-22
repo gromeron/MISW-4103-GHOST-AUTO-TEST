@@ -13,7 +13,7 @@ describe('Page Escenarios 1 - 5 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE 
 
     it("1. Crear página con nombre y con descripción, verificar que página quedó en estado published. / POOL DE DATOS A-PRIORI ", () => {
 
-        cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
+        cy.request(Cypress.env('pageJson')).then((response) => {
             let datos = response.body;
             let pageTitle = datos[Math.floor(Math.random()*datos.length)]["titulo"];
             let pageDescription = datos[Math.floor(Math.random()*datos.length)]["descripcion1"];
@@ -32,7 +32,7 @@ describe('Page Escenarios 1 - 5 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE 
 
     it("2. Crear página programada con nombre y con descripción , verificar que página quedó en estado scheduled. / POOL DE DATOS A-PRIORI", () => {
 
-        cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
+        cy.request(Cypress.env('pageJson')).then((response) => {
             let datos = response.body;
             let pageTitle = datos[Math.floor(Math.random()*datos.length)]["titulo"];
             let pageDescription = datos[Math.floor(Math.random()*datos.length)]["descripcion1"];
@@ -50,7 +50,7 @@ describe('Page Escenarios 1 - 5 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE 
 
     it("3. Crear página sin guardar con nombre y con descripción, verificar que página quedó en estado draft. / POOL DE DATOS A-PRIORI", () => {
 
-        cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
+        cy.request(Cypress.env('pageJson')).then((response) => {
             let datos = response.body;
             let pageTitle = datos[Math.floor(Math.random()*datos.length)]["titulo"];
             let pageDescription = datos[Math.floor(Math.random()*datos.length)]["descripcion1"];
@@ -66,7 +66,7 @@ describe('Page Escenarios 1 - 5 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE 
 
     it("4. Crear página programada con nombre y con descripción, verificar que página quedó en estado scheduled, editar página-descripción y publicar (live now), verificar que quedó en estado published. / POOL DE DATOS A-PRIORI", () => {
 
-        cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
+        cy.request(Cypress.env('pageJson')).then((response) => {
             let datos = response.body;
             let pageTitle = datos[Math.floor(Math.random()*datos.length)]["titulo"];
             let pageDescription = datos[Math.floor(Math.random()*datos.length)]["descripcion1"];
@@ -95,7 +95,7 @@ describe('Page Escenarios 1 - 5 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE 
 
     it("5. Crear página sin guardar con nombre y con descripción , verificar que página quedó en estado draft, editar página-descripción y publicar (live now), verificar que quedó en estado published. / POOL DE DATOS A-PRIORI", () => {
 
-        cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
+        cy.request(Cypress.env('pageJson')).then((response) => {
             let datos = response.body;
             let pageTitle = datos[Math.floor(Math.random()*datos.length)]["titulo"];
             let pageDescription = datos[Math.floor(Math.random()*datos.length)]["descripcion1"];

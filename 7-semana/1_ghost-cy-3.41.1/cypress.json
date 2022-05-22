@@ -5,6 +5,7 @@
         "fullName": "Gustavo Romero",
         "user1Email": "g.romeron2@uniandes.edu.co",
         "user1Password": "1234567890!",
-        "youtubeUrl": "https://www.youtube.com/watch?v=gkDbAWKkeX4"
+        "youtubeUrl": "https://www.youtube.com/watch?v=gkDbAWKkeX4",
+        "pageJson": "https://my.api.mockaroo.com/pages.json?key=5b1e5630"
     }
 }
