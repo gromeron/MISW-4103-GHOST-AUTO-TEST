@@ -51,12 +51,12 @@ export class Tag {
 
     TypeTagName(tagName: string) {
         cy.get('#tag-name')
-            .type(tagName, {force:true});
+            .type(tagName, { force: true });
     };
 
     TypeTagDescription(tagDescription: string) {
         cy.get('#tag-description')
-            .type(tagDescription, {force:true});
+            .type(tagDescription, { force: true });
     };
 
     typeTagSlug(tagSlug: string) {
@@ -70,38 +70,46 @@ export class Tag {
         return cy.log('La lista está vacia')
     };
 
-    verifyTagCreated(tagName: string) {
+    /** verifyTagCreated(tagName: string) {
         cy.get('body').then((body => {
             if (body.find('section.content-list h3').length > 0) {
-                cy.contains(tagName).should('exist');
+                cy.get('section.content-list h3').each(($h3) => {
+                    if ($h3[0].innerText === tagName) {
+                        cy.log('Tag * encontrado')
+                    }
+                })
             } else {
                 cy.log('El tag no fue encontrado')
             }
         }))
-    }
+    } */
 
     deleteTagNamefield() {
         cy.get('[role="main"]').scrollTo('top');
         cy.wait(2000);
-        cy.get('#tag-name').click({force:true}).clear({force:true});
+        cy.get('#tag-name').click({ force: true }).clear({ force: true });
     }
 
     deleteTagDescriptionfield() {
         cy.get('[role="main"]').scrollTo('top');
         cy.wait(2000);
-        cy.get('#tag-description').click({force:true}).clear({force:true});
+        cy.get('#tag-description').click({ force: true }).clear({ force: true });
     }
 
     selectTagByTagName(tagName: string) {
-        cy.get('body').then((body => {
-            if (body.find('section.content-list h3').length > 0) {
-                cy.get('section.content-list h3').find(tagName).click({force:true});
-                /* cy.contains('h3',tagName).click(); */
-            } else {
-                cy.log('El tag no se encontró')
-            }
-        }))
-    }
+        cy.get('section.content-list h3')
+            .each(($h3) => {
+                if ($h3.length > 0) {
+                    if ($h3[0].innerText === tagName) {
+                        expect($h3[0].innerText).to.equal(tagName);
+                        cy.contains('.gh-tag-list-name', tagName).click()
+                        return cy.log('++++++++++++')
+                    }
+                } else {
+                    return cy.log('----------');
+                }
+            });
+    };
 
     findTagByGlobalSearch(tagName: string) {
         cy.once('uncaught:exception', () => false);
@@ -117,39 +125,40 @@ export class Tag {
                 cy.get('li.ember-power-select-group').should('not.exist');
             }
         })
-
-
     }
-};
 
-/* verifyTagCreated(tagName: string) {
-    let element = 'h3.gh-tag-list-name';
-        if (cy.get(element).should('not.exist')) {
-            return cy.log('No se encontró el tag creado')
-        } else {
-            cy.get(element).each(($h3) => {
+
+    /* verifyTagCreated(tagName: string) {
+        let element = 'h3.gh-tag-list-name';
+            if (cy.get(element).should('not.exist')) {
+                return cy.log('No se encontró el tag creado')
+            } else {
+                cy.get(element).each(($h3) => {
+                    if ($h3.length > 0) {
+                        if ($h3[0].innerText === tagName) {
+                            return cy.log('El tag creado se encontró');
+                        }
+                    } /* else {
+                        return false;
+                    } */
+    /*})
+    }; */
+
+    verifyTagCreated(tagName: string) {
+        cy.get('section.content-list h3')
+            .each(($h3) => {
                 if ($h3.length > 0) {
                     if ($h3[0].innerText === tagName) {
-                        return cy.log('El tag creado se encontró');
+                        expect($h3[0].innerText).to.equal(tagName);
+                        return cy.log('++++++++++++')
                     }
-                } /* else {
-                    return false;
-                } */
-/*})
-}; */
-
-/* verifyTagCreated(tagName: string) {
-    cy.get('.gh-tag-list-name')
-        .each(($h3) => {
-            if ($h3.length > 0) {
-                if ($h3[0].innerText === tagName) {
-                    expect($h3[0].innerText).to.equal(tagName);
+                } else {
+                    return cy.log('----------');
                 }
-            } else {
-                return false;
-            }
-        });
-}; */
+            });
+    };
+
+};
 
 
 /* selectTagCreated(tagName: string) {

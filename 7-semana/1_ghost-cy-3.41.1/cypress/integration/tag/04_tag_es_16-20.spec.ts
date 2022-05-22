@@ -7,13 +7,13 @@ import { Tag } from '../../pageObject/tag';
 const login = new Login;
 const tag = new Tag;
 
-describe('Tag Escenarios 6 - 10', () => {
+describe('Tag Escenarios 16 - 20', () => {
 
     beforeEach(() => {
         login.loginRegistrar(Cypress.env('user1Email'), Cypress.env('user1Password'));
     });
 
-    it('36- Crear tag: con nombre y sin descripcion', () => {
+    it('46- Crear tag con color RGB de mas de 6 caracteres', () => {
 
         faker.seed(4036);
 
@@ -27,7 +27,7 @@ describe('Tag Escenarios 6 - 10', () => {
         tag.verifyTagCreated(tagName);
     });
 
-    it('37- Crear tag: solo con slug', () => {
+    it('47- Crear tag con todos los datos principales y Título de Metadata de mas de 70 caracteres', () => {
 
         faker.seed(4037);
 
@@ -40,7 +40,7 @@ describe('Tag Escenarios 6 - 10', () => {
         tag.tagError
     });
 
-    it('38- Crear tag con nombre y con descripción', () => {
+    it('48- Crear tag con todos los datos principales y Título de Metadata de 70 caracteres', () => {
 
         faker.seed(4038);
 
@@ -56,7 +56,7 @@ describe('Tag Escenarios 6 - 10', () => {
         tag.verifyTagCreated(tagName);
     });
 
-    it('39- Crear tag con nombre y descripción; editar tag recién creado sin nombre y sin descripción', () => {
+    it('49- Crear tag con todos los datos principales y Descripción de Metadata de mas de 156 caracteres', () => {
 
         /* faker.seed(4038); */
 
@@ -77,7 +77,7 @@ describe('Tag Escenarios 6 - 10', () => {
         tag.tagError();
     });
 
-    it('40- Crear tag con nombre y descripción; editar tag recién creado con nombre y sin descripción', () => {
+    it('50- Crear tag con todos los datos principales y Descripción de Metadata de 156 caracteres', () => {
 
         /* faker.seed(4038); */
 
