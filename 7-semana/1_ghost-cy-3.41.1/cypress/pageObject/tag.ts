@@ -1,12 +1,11 @@
-import { should } from "chai";
-import { first } from "cypress/types/lodash";
-
 export class Tag {
+
+    private tagMainLocator = 'a[href$="#/tags/"]';
 
     constructor() { }
 
     tagMain() {
-        cy.get('a[href$="#/tags/"]')
+        cy.get(this.tagMainLocator)
             .first().click();
         cy.wait(2000);
         cy.url().should('eq', 'http://localhost:2368/ghost/#/tags');
@@ -16,11 +15,6 @@ export class Tag {
         cy.contains('New tag')
             .first().click();
     };
-
-    /* tagNameInput(name: string) {
-        cy.get('#tag-name')
-            .type(name, { force: true })
-    } */
 
     tagSave() {
         cy.contains('Save')
@@ -57,12 +51,12 @@ export class Tag {
 
     TypeTagName(tagName: string) {
         cy.get('#tag-name')
-            .type(tagName);
+            .type(tagName, {force:true});
     };
 
     TypeTagDescription(tagDescription: string) {
-        cy.contains('Description')
-            .type(tagDescription);
+        cy.get('#tag-description')
+            .type(tagDescription, {force:true});
     };
 
     typeTagSlug(tagSlug: string) {
@@ -77,16 +71,36 @@ export class Tag {
     };
 
     verifyTagCreated(tagName: string) {
-        cy.get('h3.gh-tag-list-name')
-            .each(($h3) => {
-                if ($h3.length > 0) {
-                    if ($h3[0].innerText === tagName) {
-                        return cy.log('El tag creado se encontró');
-                    }
-                } else {
-                    return cy.log('El tag creado no se encontró');
-                }
-            });
+        cy.get('body').then((body => {
+            if (body.find('section.content-list h3').length > 0) {
+                cy.contains(tagName).should('exist');
+            } else {
+                cy.log('El tag no fue encontrado')
+            }
+        }))
+    }
+
+    deleteTagNamefield() {
+        cy.get('[role="main"]').scrollTo('top');
+        cy.wait(2000);
+        cy.get('#tag-name').click({force:true}).clear({force:true});
+    }
+
+    deleteTagDescriptionfield() {
+        cy.get('[role="main"]').scrollTo('top');
+        cy.wait(2000);
+        cy.get('#tag-description').click({force:true}).clear({force:true});
+    }
+
+    selectTagByTagName(tagName: string) {
+        cy.get('body').then((body => {
+            if (body.find('section.content-list h3').length > 0) {
+                cy.get('section.content-list h3').find(tagName).click({force:true});
+                /* cy.contains('h3',tagName).click(); */
+            } else {
+                cy.log('El tag no se encontró')
+            }
+        }))
     }
 
     findTagByGlobalSearch(tagName: string) {

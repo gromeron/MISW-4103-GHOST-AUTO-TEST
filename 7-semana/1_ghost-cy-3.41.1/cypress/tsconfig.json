@@ -5,6 +5,6 @@
       "target": "ES6",
       "lib": ["ES6", "DOM"],
       "sourceMap": false,
-      "types": ["cypress"]
+      "types": ["cypress", "cypress-xpath"]
     }
   }
