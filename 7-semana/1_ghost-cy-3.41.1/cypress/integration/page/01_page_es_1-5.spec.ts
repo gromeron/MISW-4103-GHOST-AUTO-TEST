@@ -5,13 +5,13 @@ import { Page } from '../../pageObject/page';
 const login = new Login;
 const page = new Page;
 
-describe('Page Escenarios 1 - 5 (ESTRATEGIA DE GENERACIÓN DE DATOS #1)', () => {
+describe('Page Escenarios 1 - 5 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE DATOS A-PRIORI)', () => {
 
     beforeEach(() => {
         login.loginRegistrar(Cypress.env('user1Email'), Cypress.env('user1Password'));
     });
 
-    it("1. Crear página con nombre y con descripción, verificar que página quedó en estado published. ", () => {
+    it("1. Crear página con nombre y con descripción, verificar que página quedó en estado published. / POOL DE DATOS A-PRIORI ", () => {
 
         cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
             let datos = response.body;
@@ -30,7 +30,7 @@ describe('Page Escenarios 1 - 5 (ESTRATEGIA DE GENERACIÓN DE DATOS #1)', () => 
 
     });
 
-    it("2. Crear página programada con nombre y con descripción , verificar que página quedó en estado scheduled.", () => {
+    it("2. Crear página programada con nombre y con descripción , verificar que página quedó en estado scheduled. / POOL DE DATOS A-PRIORI", () => {
 
         cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
             let datos = response.body;
@@ -48,7 +48,7 @@ describe('Page Escenarios 1 - 5 (ESTRATEGIA DE GENERACIÓN DE DATOS #1)', () => 
         });
     });
 
-    it("3. Crear página sin guardar con nombre y con descripción, verificar que página quedó en estado draft.", () => {
+    it("3. Crear página sin guardar con nombre y con descripción, verificar que página quedó en estado draft. / POOL DE DATOS A-PRIORI", () => {
 
         cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
             let datos = response.body;
@@ -64,7 +64,7 @@ describe('Page Escenarios 1 - 5 (ESTRATEGIA DE GENERACIÓN DE DATOS #1)', () => 
 
     });
 
-    it("4. Crear página programada con nombre y con descripción, verificar que página quedó en estado scheduled, editar página-descripción y publicar (live now), verificar que quedó en estado published.", () => {
+    it("4. Crear página programada con nombre y con descripción, verificar que página quedó en estado scheduled, editar página-descripción y publicar (live now), verificar que quedó en estado published. / POOL DE DATOS A-PRIORI", () => {
 
         cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
             let datos = response.body;
@@ -93,7 +93,7 @@ describe('Page Escenarios 1 - 5 (ESTRATEGIA DE GENERACIÓN DE DATOS #1)', () => 
 
     });
 
-    it("5. Crear página sin guardar con nombre y con descripción , verificar que página quedó en estado draft, editar página-descripción y publicar (live now), verificar que quedó en estado published.", () => {
+    it("5. Crear página sin guardar con nombre y con descripción , verificar que página quedó en estado draft, editar página-descripción y publicar (live now), verificar que quedó en estado published. / POOL DE DATOS A-PRIORI", () => {
 
         cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
             let datos = response.body;

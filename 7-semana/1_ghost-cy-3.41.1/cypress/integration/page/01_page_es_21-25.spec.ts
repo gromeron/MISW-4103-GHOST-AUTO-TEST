@@ -8,7 +8,7 @@ const login = new Login;
 const page = new Page;
 
 
-describe('Page Escenarios 21 - 25 (ESTRATEGIA DE GENERACIÓN DE DATOS #3)', () => {
+describe('Page Escenarios 21 - 25 (ESTRATEGIA DE GENERACIÓN DE DATOS #3: ESCENARIO ALEATORIO)', () => {
 
     beforeEach(() => {
         login.loginRegistrar(Cypress.env('user1Email'), Cypress.env('user1Password'));
@@ -16,7 +16,7 @@ describe('Page Escenarios 21 - 25 (ESTRATEGIA DE GENERACIÓN DE DATOS #3)', () =
 
 
 
-    it("21. Crear página con nombre y descripción, verificar que página quedó en estado published; con fecha actual y después editar misma página con fecha publicación x años después, verificar que queda en estado scheduled", () => {
+    it("21. Crear página con nombre y descripción, verificar que página quedó en estado published; con fecha actual y después editar misma página con fecha publicación x años después, verificar que queda en estado scheduled. / ESCENARIO ALEATORIO", () => {
         let pageTitle = faker.company.companyName();
         let pageDescripcion = faker.lorem.paragraphs(1);
         let yearsScheduled = faker.datatype.number({ 'min': 1, 'max': 50});
@@ -42,7 +42,7 @@ describe('Page Escenarios 21 - 25 (ESTRATEGIA DE GENERACIÓN DE DATOS #3)', () =
     });
 
 
-    it("22. Crear página con nombre y descripción con datos de twitter, verificar que página quedó en estado published.", () => {
+    it("22. Crear página con nombre y descripción con datos de twitter, verificar que página quedó en estado published. / ESCENARIO ALEATORIO", () => {
         let pageTitle = faker.company.companyName();
         let pageDescripcion = faker.lorem.paragraphs(1);
         let twitterTitle = faker.company.companyName();
@@ -65,7 +65,7 @@ describe('Page Escenarios 21 - 25 (ESTRATEGIA DE GENERACIÓN DE DATOS #3)', () =
 
     });
 
-    it("23. Crear página con nombre y descripción con datos de meta data, verificar que página quedó en estado published.", () => {
+    it("23. Crear página con nombre y descripción con datos de meta data, verificar que página quedó en estado published. / ESCENARIO ALEATORIO", () => {
         let pageTitle = faker.company.companyName();
         let pageDescripcion = faker.lorem.paragraphs(1);
         let metaTitle = faker.company.companyName();
@@ -90,7 +90,7 @@ describe('Page Escenarios 21 - 25 (ESTRATEGIA DE GENERACIÓN DE DATOS #3)', () =
 
     });
 
-    it("24. Crear página con nombre y descripción, verificar que página quedó en estado published; y borrar página recién creada. verificar que no está la pagina en la lista", () => {
+    it("24. Crear página con nombre y descripción, verificar que página quedó en estado published; y borrar página recién creada. verificar que no está la pagina en la lista. / ESCENARIO ALEATORIO", () => {
         let pageTitle = faker.company.companyName();
         let pageDescripcion = faker.lorem.paragraphs(1);
         page.pagesMain();
@@ -109,7 +109,7 @@ describe('Page Escenarios 21 - 25 (ESTRATEGIA DE GENERACIÓN DE DATOS #3)', () =
         page.verifyPageIsDeleted(pageTitle);
     });
 
-    it("25. Crear página con nombre y descripción, verificar que página quedó en estado published; filtrar páginas por filtro de autores (escoger ultima opción)", () => {
+    it("25. Crear página con nombre y descripción, verificar que página quedó en estado published; filtrar páginas por filtro de autores (escoger ultima opción). / ESCENARIO ALEATORIO", () => {
         let pageTitle = faker.company.companyName();
         let pageDescripcion = faker.lorem.paragraphs(1);
         page.pagesMain();

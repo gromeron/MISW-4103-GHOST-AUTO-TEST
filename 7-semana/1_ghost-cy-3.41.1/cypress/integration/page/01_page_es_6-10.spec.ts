@@ -5,14 +5,14 @@ import { Page } from '../../pageObject/page';
 const login = new Login;
 const page = new Page;
 
-describe('Page Escenarios 6 - 10 (ESTRATEGIA DE GENERACIÓN DE DATOS #1)', () => {
+describe('Page Escenarios 6 - 10 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE DATOS A-PRIORI) ', () => {
 
     beforeEach(() => {
         login.loginRegistrar(Cypress.env('user1Email'), Cypress.env('user1Password'));
     });
 
 
-    it("6. Crear página sin guardar con nombre y con descripción , verificar que página quedó en estado draft, editar página-nombre y publicar (scheduled), verificar que quedó en estado scheduled.", () => {
+    it("6. Crear página sin guardar con nombre y con descripción , verificar que página quedó en estado draft, editar página-nombre y publicar (scheduled), verificar que quedó en estado scheduled. / POOL DE DATOS A-PRIORI", () => {
 
         cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
             let datos = response.body;
@@ -38,7 +38,7 @@ describe('Page Escenarios 6 - 10 (ESTRATEGIA DE GENERACIÓN DE DATOS #1)', () =>
     });
 
 
-    it("7. Crear página con nombre y descripción, verificar que página quedó en estado published, editar página-nombre y publicar (scheduled), verificar que quedó en estado scheduled", () => {
+    it("7. Crear página con nombre y descripción, verificar que página quedó en estado published, editar página-nombre y publicar (scheduled), verificar que quedó en estado scheduled. / POOL DE DATOS A-PRIORI", () => {
 
         cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
             let datos = response.body;
@@ -68,7 +68,7 @@ describe('Page Escenarios 6 - 10 (ESTRATEGIA DE GENERACIÓN DE DATOS #1)', () =>
 
     });
 
-    it("8. Crear página con nombre y con opción (+) Html Code, verificar que página quedó en estado published.", () => {
+    it("8. Crear página con nombre y con opción (+) Html Code, verificar que página quedó en estado published. / POOL DE DATOS A-PRIORI", () => {
 
         cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
             let datos = response.body;
@@ -92,7 +92,7 @@ describe('Page Escenarios 6 - 10 (ESTRATEGIA DE GENERACIÓN DE DATOS #1)', () =>
 
     });
 
-    it("9. Crear página con nombre y con opción (+) Email, verificar que página quedó en estado published.", () => {
+    it("9. Crear página con nombre y con opción (+) Email, verificar que página quedó en estado published. / POOL DE DATOS A-PRIORI", () => {
 
         cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
             let datos = response.body;
@@ -115,7 +115,7 @@ describe('Page Escenarios 6 - 10 (ESTRATEGIA DE GENERACIÓN DE DATOS #1)', () =>
 
     });
 
-    it("10. Crear página con nombre, descripción y con opción (+) Youtube (pegar link), verificar que página quedó en estado published.", () => {
+    it("10. Crear página con nombre, descripción y con opción (+) Youtube (pegar link), verificar que página quedó en estado published. / POOL DE DATOS A-PRIORI", () => {
 
         cy.request("https://my.api.mockaroo.com/pages.json?key=5b1e5630").then((response) => {
             let datos = response.body;

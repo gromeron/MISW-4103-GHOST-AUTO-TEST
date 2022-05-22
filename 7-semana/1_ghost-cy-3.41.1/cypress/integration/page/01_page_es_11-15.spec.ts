@@ -27,14 +27,14 @@ const createArrayJsonData = (numData = 5) => {
 let fakeDataJson = createArrayJsonData(100);
 let finalJsons = Array();
 
-describe('Page Escenarios 11 - 15 (ESTRATEGIA DE GENERACIÓN DE DATOS #2)', () => {
+describe('Page Escenarios 11 - 15 (ESTRATEGIA DE GENERACIÓN DE DATOS #2: POOL DE DATOS (PSEUDO) ALEATORIO DINÁMICO)', () => {
 
     beforeEach(() => {
         login.loginRegistrar(Cypress.env('user1Email'), Cypress.env('user1Password'));
     });
 
 
-    it("11. Crear página programada con nombre, descripción y con la fecha predeterminada, verificar que página quedó en estado scheduled y después editar misma página con fecha publicación x dias después de la fecha original, verificar que página quedó en estado scheduled", () => {
+    it("11. Crear página programada con nombre, descripción y con la fecha predeterminada, verificar que página quedó en estado scheduled y después editar misma página con fecha publicación x dias después de la fecha original, verificar que página quedó en estado scheduled. / POOL DE DATOS (PSEUDO) ALEATORIO DINÁMICO", () => {
         let fakeJson = fakeDataJson[Math.floor(Math.random()*fakeDataJson.length)];
         let pageTitle = fakeJson["pageTitle"];
         let pageDescription = fakeJson["pageDescription"];
@@ -60,7 +60,7 @@ describe('Page Escenarios 11 - 15 (ESTRATEGIA DE GENERACIÓN DE DATOS #2)', () =
 
 
 
-    it("12. Crear página con nombre, descripción y con tags, verificar que página quedó en estado published.", () => {
+    it("12. Crear página con nombre, descripción y con tags, verificar que página quedó en estado published. / POOL DE DATOS (PSEUDO) ALEATORIO DINÁMICO", () => {
         let fakeJson = fakeDataJson[Math.floor(Math.random()*fakeDataJson.length)];
         let tagName = fakeJson["tagName"];
         let pageTitle = fakeJson["pageTitle"];
@@ -89,7 +89,7 @@ describe('Page Escenarios 11 - 15 (ESTRATEGIA DE GENERACIÓN DE DATOS #2)', () =
         page.verifyPageList(pageTitle, "PUBLISHED");
     });
 
-    it("13. Crear página con nombre, descripción y con page-URL, verificar que página quedó en estado published.", () => {
+    it("13. Crear página con nombre, descripción y con page-URL, verificar que página quedó en estado published. / POOL DE DATOS (PSEUDO) ALEATORIO DINÁMICO", () => {
         let fakeJson = fakeDataJson[Math.floor(Math.random()*fakeDataJson.length)];
         let pageUrl = fakeJson["pageUrl"];
         let pageTitle = fakeJson["pageTitle"];
@@ -109,7 +109,7 @@ describe('Page Escenarios 11 - 15 (ESTRATEGIA DE GENERACIÓN DE DATOS #2)', () =
         page.verifyPageList(pageTitle, "PUBLISHED");
     });
 
-    it("14. Crear página con nombre, descripción y con opcion -feature this page-, verificar que página quedó en estado published.", () => {
+    it("14. Crear página con nombre, descripción y con opcion -feature this page-, verificar que página quedó en estado published. / POOL DE DATOS (PSEUDO) ALEATORIO DINÁMICO", () => {
         let fakeJson = fakeDataJson[Math.floor(Math.random()*fakeDataJson.length)];
         let pageTitle = fakeJson["pageTitle"];
         let pageDescription = fakeJson["pageDescription"];
@@ -128,7 +128,7 @@ describe('Page Escenarios 11 - 15 (ESTRATEGIA DE GENERACIÓN DE DATOS #2)', () =
         page.verifyPageList(pageTitle, "PUBLISHED");
     });
 
-    it("15. Crear página con nombre, descripción y con Excerpt, verificar que página quedó en estado published.", () => {
+    it("15. Crear página con nombre, descripción y con Excerpt, verificar que página quedó en estado published. / POOL DE DATOS (PSEUDO) ALEATORIO DINÁMICO", () => {
         let fakeJson = fakeDataJson[Math.floor(Math.random()*fakeDataJson.length)];
         let pageTitle = fakeJson["pageTitle"];
         let pageDescription = fakeJson["pageDescription"];
