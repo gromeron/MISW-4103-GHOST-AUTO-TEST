@@ -136,7 +136,6 @@ export class Page {
     pageTypeCodeHtml(pageCodeHtml: string){
         let element = cy.get('.CodeMirror textarea');
         return element.type(pageCodeHtml, { force: true });
-
     }
 
     pagePlusTypeLinkYoutube(pageLinkYoutube: string){
