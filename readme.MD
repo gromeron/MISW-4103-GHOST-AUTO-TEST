@@ -28,6 +28,7 @@ Dentro de esta carpeta se deben realizar los siguientes comandos para tener las 
 npm i
 npm i cypress
 npm i typescript
+npm i dayjs
 npm i faker-js/faker --save-dev
 ```
 
