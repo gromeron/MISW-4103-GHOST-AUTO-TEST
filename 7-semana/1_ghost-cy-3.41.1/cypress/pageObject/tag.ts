@@ -18,7 +18,8 @@ export class Tag {
 
     tagSave() {
         cy.contains('Save')
-            .click();
+            .click()
+            .wait(2000);
     };
 
     selectPublicTags() {
@@ -34,7 +35,7 @@ export class Tag {
     tagError() {
         cy.get('.gh-tag-settings-multiprop p.response').then(($p) => {
             if ($p.length > 0) {
-                expect($p[0].innerText).to.equal('You must specify a name for the tag.');
+                expect($p[0].innerText).to.contain('You must specify a name for the tag.');
             }
         });
     };
@@ -42,7 +43,15 @@ export class Tag {
     slugError() {
         cy.get('.gh-tag-settings-multiprop p.response').then(($p) => {
             if ($p.length > 0) {
-                expect($p[0].innerText).to.equal('The color should be in valid hex format');
+                expect($p[0].innerText).to.contain('The color should be in valid hex format');
+            }
+        });
+    }
+
+    errorCanonicalUrl() {
+        cy.get('.form-group.error.ember-view').then(($p) => {
+            if ($p.length > 0) {
+                expect($p[0].innerText).to.contain('The url should be a valid url');
             }
         });
     }
@@ -193,8 +202,35 @@ export class Tag {
     }
 
     metadataInputTitle(title: string) {
-        cy.get('#meta-title')
+        return cy.get('#meta-title')
+            .type(title);
+    }
+
+    metadataInputDescription(description: string) {
+        return cy.get('#meta-description')
+            .type(description);
+    }
+
+    metadataInputCanonicalUrl(canonicalUrl: any) {
+        return cy.get('#canonical-url')
+            .type(canonicalUrl);
+    }
+
+    twitterExpand() {
+        cy.get('main')
+            .scrollTo('bottom');
+        cy.get(':nth-child(2) > .flex > :nth-child(2) > .gh-btn > span')
             .click({ force: true });
+    }
+
+    twitterInputTitle(title: string) {
+        return cy.get('#twitter-title')
+            .type(title);
+    }
+
+    twitterInputDescription(description: string) {
+        return cy.get('')
+            .type(description);
     }
 
 };
