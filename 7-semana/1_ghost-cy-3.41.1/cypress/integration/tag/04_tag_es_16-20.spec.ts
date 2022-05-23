@@ -13,36 +13,33 @@ describe('Tag Escenarios 16 - 20', () => {
         login.loginRegistrar(Cypress.env('user1Email'), Cypress.env('user1Password'));
     });
 
-    it('46- Crear tag con color RGB de mas de 6 caracteres', () => {
+    /* it('46- Crear tag con color RGB de mas de 6 caracteres', () => {
 
-        faker.seed(4036);
-
+        let tagColor = faker.random.alphaNumeric(7);
         let tagName = faker.company.companyName();
 
         tag.tagMain();
         tag.tagNew();
         tag.TypeTagName(tagName);
+        tag.typeRgbColor(tagColor);
         tag.tagSave();
-        tag.tagMain();
-        tag.verifyTagCreated(tagName);
-    });
+    }); */
 
     it('47- Crear tag con todos los datos principales y Título de Metadata de mas de 70 caracteres', () => {
 
-        faker.seed(4037);
-
-        let tagSlug = faker.commerce.productAdjective();
+        let tagName = faker.company.companyName();
+        let tagMetaTitle = faker.lorem.words(75);
 
         tag.tagMain();
         tag.tagNew();
-        tag.typeTagSlug(tagSlug);
+        tag.TypeTagName(tagName);
+        tag.metadataExpand();
+        tag.metadataInputTitle(tagMetaTitle);
         tag.tagSave();
-        tag.tagError
+        tag.tagError();
     });
 
-    it('48- Crear tag con todos los datos principales y Título de Metadata de 70 caracteres', () => {
-
-        faker.seed(4038);
+    /* it('48- Crear tag con todos los datos principales y Título de Metadata de 70 caracteres', () => {
 
         let tagName = faker.company.companyName();
         let tagDescription = faker.lorem.sentence(10);
@@ -54,11 +51,9 @@ describe('Tag Escenarios 16 - 20', () => {
         tag.tagSave();
         tag.tagMain();
         tag.verifyTagCreated(tagName);
-    });
+    }); */
 
-    it('49- Crear tag con todos los datos principales y Descripción de Metadata de mas de 156 caracteres', () => {
-
-        /* faker.seed(4038); */
+    /* it('49- Crear tag con todos los datos principales y Descripción de Metadata de mas de 156 caracteres', () => {
 
         let tagName = faker.company.companyName();
         let tagDescription = faker.lorem.sentence(10);
@@ -69,7 +64,6 @@ describe('Tag Escenarios 16 - 20', () => {
         tag.TypeTagDescription(tagDescription);
         tag.tagSave();
         tag.tagMain();
-        /* tag.verifyTagCreated(tagName) */
         tag.selectTagByTagName(tagName);
         tag.deleteTagNamefield();
         tag.deleteTagDescriptionfield();
@@ -78,8 +72,6 @@ describe('Tag Escenarios 16 - 20', () => {
     });
 
     it('50- Crear tag con todos los datos principales y Descripción de Metadata de 156 caracteres', () => {
-
-        /* faker.seed(4038); */
 
         let tagName1 = faker.company.companyName();
         let tagName2 = faker.company.companyName();
@@ -99,5 +91,5 @@ describe('Tag Escenarios 16 - 20', () => {
         tag.tagSave();
         tag.tagMain();
         tag.verifyTagCreated(tagName2)
-    });
+    }); */
 });

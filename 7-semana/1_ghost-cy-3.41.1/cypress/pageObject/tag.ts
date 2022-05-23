@@ -39,6 +39,23 @@ export class Tag {
         });
     };
 
+    slugError() {
+        cy.get('.gh-tag-settings-multiprop p.response').then(($p) => {
+            if ($p.length > 0) {
+                expect($p[0].innerText).to.equal('The color should be in valid hex format');
+            }
+        });
+    }
+
+    descriptionError() {
+        cy.get('.gh-tag-settings-multiprop p.response').then(($p) => {
+            if ($p.length > 0) {
+                expect($p[0].innerText).to.equal('Description cannot be longer than 500 characters.');
+            }
+        });
+        cy.wait(2000);
+    }
+
     tagFirstElement() {
         cy.get('h3.gh-tag-list-name')
             .first().click();
@@ -55,7 +72,7 @@ export class Tag {
     };
 
     TypeTagDescription(tagDescription: string) {
-        cy.get('#tag-description')
+        return cy.get('textarea[name="description"]')
             .type(tagDescription, { force: true });
     };
 
@@ -64,25 +81,20 @@ export class Tag {
             .type(tagSlug);
     }
 
+    typeRgbColor(color: string) {
+        return cy.get('input[placeholder="abcdef"]')
+            .type(color)
+    }
+
+    typeTagImage(image: string) {
+        return cy.get('.gh-btn.gh-btn-outline').type(image);
+    }
+
     verifyEmptyTagList() {
         cy.get('h3.gh-tag-list-name')
             .should('not.exist')
         return cy.log('La lista está vacia')
     };
-
-    /** verifyTagCreated(tagName: string) {
-        cy.get('body').then((body => {
-            if (body.find('section.content-list h3').length > 0) {
-                cy.get('section.content-list h3').each(($h3) => {
-                    if ($h3[0].innerText === tagName) {
-                        cy.log('Tag * encontrado')
-                    }
-                })
-            } else {
-                cy.log('El tag no fue encontrado')
-            }
-        }))
-    } */
 
     deleteTagNamefield() {
         cy.get('[role="main"]').scrollTo('top');
@@ -110,6 +122,21 @@ export class Tag {
                 }
             });
     };
+
+    /* selectTagCreated(tagName: string) {
+        cy.get('.content-list h3')
+            .each(($h3) => {
+                if ($h3.length > 0) {
+                    if ($h3[0].innerText === tagName) {
+                        $h3[0].click()
+                    }
+                }
+            });
+    }; */
+
+    selectTagCreated(tagName: string) {
+        return cy.get('.gh-tag-list-name').contains(tagName).click();
+    }
 
     findTagByGlobalSearch(tagName: string) {
         cy.once('uncaught:exception', () => false);
@@ -157,6 +184,18 @@ export class Tag {
                 }
             });
     };
+
+    metadataExpand() {
+        cy.get('main')
+            .scrollTo('bottom')
+        cy.get(':nth-child(1) > .flex > :nth-child(2) > .gh-btn > span')
+            .click({ force: true });
+    }
+
+    metadataInputTitle(title: string) {
+        cy.get('#meta-title')
+            .click({ force: true });
+    }
 
 };
 

@@ -15,8 +15,6 @@ describe('Tag Escenarios 6 - 10', () => {
 
     it('36- Crear tag: con nombre y sin descripcion', () => {
 
-        faker.seed(4036);
-
         let tagName = faker.company.companyName();
 
         tag.tagMain();
@@ -29,8 +27,6 @@ describe('Tag Escenarios 6 - 10', () => {
 
     it('37- Crear tag: solo con slug', () => {
 
-        faker.seed(4037);
-
         let tagSlug = faker.commerce.productAdjective();
 
         tag.tagMain();
@@ -41,8 +37,6 @@ describe('Tag Escenarios 6 - 10', () => {
     });
 
     it('38- Crear tag con nombre y con descripción', () => {
-
-        faker.seed(4038);
 
         let tagName = faker.company.companyName();
         let tagDescription = faker.lorem.sentence(10);
@@ -58,8 +52,6 @@ describe('Tag Escenarios 6 - 10', () => {
 
     it('39- Crear tag con nombre y descripción; editar tag recién creado sin nombre y sin descripción', () => {
 
-        /* faker.seed(4038); */
-
         let tagName = faker.company.companyName();
         let tagDescription = faker.lorem.sentence(10);
 
@@ -69,7 +61,6 @@ describe('Tag Escenarios 6 - 10', () => {
         tag.TypeTagDescription(tagDescription);
         tag.tagSave();
         tag.tagMain();
-        /* tag.verifyTagCreated(tagName) */
         tag.selectTagByTagName(tagName);
         tag.deleteTagNamefield();
         tag.deleteTagDescriptionfield();
@@ -78,8 +69,6 @@ describe('Tag Escenarios 6 - 10', () => {
     });
 
     it('40- Crear tag con nombre y descripción; editar tag recién creado con nombre y sin descripción', () => {
-
-        /* faker.seed(4038); */
 
         let tagName1 = faker.company.companyName();
         let tagName2 = faker.company.companyName();

@@ -13,8 +13,6 @@ describe('Tag Escenarios 1 - 5', () => {
 
     it('31- Crear tag con nombre y después filtrar por tags públicos', () => {
         
-        /* faker.seed(4031); */
-
         let tagName = faker.company.companyName();
 
         tag.tagMain();
