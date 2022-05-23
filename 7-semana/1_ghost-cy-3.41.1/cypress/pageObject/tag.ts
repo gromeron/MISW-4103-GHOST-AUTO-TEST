@@ -229,7 +229,24 @@ export class Tag {
     }
 
     twitterInputDescription(description: string) {
-        return cy.get('')
+        return cy.get('#twitter-description')
+            .type(description);
+    }
+
+    facebookExpand() {
+        cy.get('main')
+            .scrollTo('bottom');
+        cy.get(':nth-child(3) > .flex > :nth-child(2) > .gh-btn > span')
+            .click({ force: true });
+    }
+
+    facebookInputTitle(title: string) {
+        return cy.get('#og-title')
+            .type(title);
+    }
+
+    facebookInputDescription(description: string) {
+        return cy.get('#og-description')
             .type(description);
     }
 

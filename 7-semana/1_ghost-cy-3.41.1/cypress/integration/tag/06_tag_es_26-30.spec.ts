@@ -15,89 +15,140 @@ describe('Tag Escenarios 26 - 30', () => {
 
     it('56- Crear tag con todos los datos principales y Tarjeta de Twitter con Descripción de Twitter de 156 caracteres', () => {
 
-        faker.seed(4036);
-
         let tagName = faker.company.companyName();
+        let tagDescription = faker.lorem.sentence();
+        let tagMetaTitle = faker.lorem.words();
+        let tagMetaDescription = faker.lorem.words();
+        let urlCanonical = faker.internet.url();
+        let twitterTitle = faker.lorem.word(10);
+        let twitterDescription = faker.lorem.word(156);
 
         tag.tagMain();
         tag.tagNew();
         tag.TypeTagName(tagName);
+        tag.TypeTagDescription(tagDescription);
+        tag.metadataExpand();
+        tag.metadataInputTitle(tagMetaTitle);
+        tag.metadataInputDescription(tagMetaDescription);
+        tag.metadataInputCanonicalUrl(urlCanonical);
+        tag.twitterExpand();
+        tag.twitterInputTitle(twitterTitle);
+        tag.twitterInputDescription(twitterDescription);
         tag.tagSave();
         tag.tagMain();
-        tag.verifyTagCreated(tagName);
     });
 
     it('57- Crear tag con todos los datos principales y Tarjeta de Facebook con Título de Facebook de mas de 70 caracteres', () => {
 
-        faker.seed(4037);
-
-        let tagSlug = faker.commerce.productAdjective();
+        let tagName = faker.company.companyName();
+        let tagDescription = faker.lorem.sentence();
+        let tagMetaTitle = faker.lorem.words();
+        let tagMetaDescription = faker.lorem.words();
+        let urlCanonical = faker.internet.url();
+        let twitterTitle = faker.lorem.word(10);
+        let twitterDescription = faker.lorem.word(157);
+        let facebookTitle = faker.lorem.word(71);
 
         tag.tagMain();
         tag.tagNew();
-        tag.typeTagSlug(tagSlug);
+        tag.TypeTagName(tagName);
+        tag.TypeTagDescription(tagDescription);
+        tag.metadataExpand();
+        tag.metadataInputTitle(tagMetaTitle);
+        tag.metadataInputDescription(tagMetaDescription);
+        tag.metadataInputCanonicalUrl(urlCanonical);
+        tag.twitterExpand();
+        tag.twitterInputTitle(twitterTitle);
+        tag.twitterInputDescription(twitterDescription);
+        tag.facebookExpand();
+        tag.facebookInputTitle(facebookTitle);
         tag.tagSave();
-        tag.tagError
+        tag.tagMain();
     });
 
     it('58- Crear tag con todos los datos principales y Tarjeta de Facebook con Título de Facebook de 70 caracteres', () => {
 
-        faker.seed(4038);
-
         let tagName = faker.company.companyName();
-        let tagDescription = faker.lorem.sentence(10);
+        let tagDescription = faker.lorem.sentence();
+        let tagMetaTitle = faker.lorem.words();
+        let tagMetaDescription = faker.lorem.words();
+        let urlCanonical = faker.internet.url();
+        let twitterTitle = faker.lorem.word(10);
+        let twitterDescription = faker.lorem.word(157);
+        let facebookTitle = faker.lorem.word(70);
 
         tag.tagMain();
         tag.tagNew();
         tag.TypeTagName(tagName);
         tag.TypeTagDescription(tagDescription);
+        tag.metadataExpand();
+        tag.metadataInputTitle(tagMetaTitle);
+        tag.metadataInputDescription(tagMetaDescription);
+        tag.metadataInputCanonicalUrl(urlCanonical);
+        tag.twitterExpand();
+        tag.twitterInputTitle(twitterTitle);
+        tag.twitterInputDescription(twitterDescription);
+        tag.facebookExpand();
+        tag.facebookInputTitle(facebookTitle);
         tag.tagSave();
         tag.tagMain();
-        tag.verifyTagCreated(tagName);
     });
 
     it('59- Crear tag con todos los datos principales y Tarjeta de Facebook con Descripción de Facebook de mas de 156 caracteres', () => {
 
-        /* faker.seed(4038); */
-
         let tagName = faker.company.companyName();
-        let tagDescription = faker.lorem.sentence(10);
+        let tagDescription = faker.lorem.sentence();
+        let tagMetaTitle = faker.lorem.words();
+        let tagMetaDescription = faker.lorem.words();
+        let urlCanonical = faker.internet.url();
+        let twitterTitle = faker.lorem.word(10);
+        let twitterDescription = faker.lorem.word(157);
+        let facebookTitle = faker.lorem.word(71);
+        let facebookDescription = faker.lorem.word(157);
 
         tag.tagMain();
         tag.tagNew();
         tag.TypeTagName(tagName);
         tag.TypeTagDescription(tagDescription);
+        tag.metadataExpand();
+        tag.metadataInputTitle(tagMetaTitle);
+        tag.metadataInputDescription(tagMetaDescription);
+        tag.metadataInputCanonicalUrl(urlCanonical);
+        tag.twitterExpand();
+        tag.twitterInputTitle(twitterTitle);
+        tag.twitterInputDescription(twitterDescription);
+        tag.facebookExpand();
+        tag.facebookInputTitle(facebookTitle);
+        tag.facebookInputDescription(facebookDescription);
         tag.tagSave();
-        tag.tagMain();
-        /* tag.verifyTagCreated(tagName) */
-        tag.selectTagByTagName(tagName);
-        tag.deleteTagNamefield();
-        tag.deleteTagDescriptionfield();
-        tag.tagSave();
-        tag.tagError();
     });
 
-    it('60- ', () => {
+    it('60- Crear tag con todos los datos principales y Tarjeta de Facebook con Descripción de Facebook con 156 caracteres', () => {
 
-        /* faker.seed(4038); */
-
-        let tagName1 = faker.company.companyName();
-        let tagName2 = faker.company.companyName();
-        let tagDescription = faker.lorem.sentence(10);
+        let tagName = faker.company.companyName();
+        let tagDescription = faker.lorem.sentence();
+        let tagMetaTitle = faker.lorem.words();
+        let tagMetaDescription = faker.lorem.words();
+        let urlCanonical = faker.internet.url();
+        let twitterTitle = faker.lorem.word(10);
+        let twitterDescription = faker.lorem.word(157);
+        let facebookTitle = faker.lorem.word(71);
+        let facebookDescription = faker.lorem.word(156);
 
         tag.tagMain();
         tag.tagNew();
-        tag.TypeTagName(tagName1);
+        tag.TypeTagName(tagName);
         tag.TypeTagDescription(tagDescription);
+        tag.metadataExpand();
+        tag.metadataInputTitle(tagMetaTitle);
+        tag.metadataInputDescription(tagMetaDescription);
+        tag.metadataInputCanonicalUrl(urlCanonical);
+        tag.twitterExpand();
+        tag.twitterInputTitle(twitterTitle);
+        tag.twitterInputDescription(twitterDescription);
+        tag.facebookExpand();
+        tag.facebookInputTitle(facebookTitle);
+        tag.facebookInputDescription(facebookDescription);
         tag.tagSave();
-        tag.tagMain();
-        tag.verifyTagCreated(tagName1)
-        tag.selectTagByTagName(tagName1);
-        tag.deleteTagNamefield();
-        tag.TypeTagName(tagName2)
-        tag.deleteTagDescriptionfield();
-        tag.tagSave();
-        tag.tagMain();
-        tag.verifyTagCreated(tagName2)
     });
 });

@@ -106,7 +106,8 @@ describe('Tag Escenarios 21 - 25', () => {
         let tagMetaTitle = faker.lorem.words();
         let tagMetaDescription = faker.lorem.words();
         let urlCanonical = faker.internet.url();
-        let twitterTitle = faker.lorem.word(71);
+        let twitterTitle = faker.lorem.word(10);
+        let twitterDescription = faker.lorem.word(157);
 
         tag.tagMain();
         tag.tagNew();
@@ -118,6 +119,7 @@ describe('Tag Escenarios 21 - 25', () => {
         tag.metadataInputCanonicalUrl(urlCanonical);
         tag.twitterExpand();
         tag.twitterInputTitle(twitterTitle);
+        tag.twitterInputDescription(twitterDescription);
         tag.tagSave();
         tag.tagMain();
     });

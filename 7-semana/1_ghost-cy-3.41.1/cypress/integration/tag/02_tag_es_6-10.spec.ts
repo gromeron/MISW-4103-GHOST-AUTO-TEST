@@ -7,7 +7,7 @@ import { Tag } from '../../pageObject/tag';
 const login = new Login;
 const tag = new Tag;
 
-describe('Tag Escenarios 6 - 10', () => {
+describe('Tag Escenarios 6 - 10 (ESTRATEGIA DE GENERACIÓN DE DATOS #1: POOL DE DATOS A-PRIORI)', () => {
 
     beforeEach(() => {
         login.loginRegistrar(Cypress.env('user1Email'), Cypress.env('user1Password'));
@@ -15,14 +15,18 @@ describe('Tag Escenarios 6 - 10', () => {
 
     it('36- Crear tag: con nombre y sin descripcion', () => {
 
-        let tagName = faker.company.companyName();
+        cy.request(Cypress.env('pageJson'))
+            .then((response) => {
+                let datos = response.body;
+                let tagName = datos[Math.floor(Math.random() * datos.length)]["titulo"];
 
-        tag.tagMain();
-        tag.tagNew();
-        tag.TypeTagName(tagName);
-        tag.tagSave();
-        tag.tagMain();
-        tag.verifyTagCreated(tagName);
+                tag.tagMain();
+                tag.tagNew();
+                tag.TypeTagName(tagName);
+                tag.tagSave();
+                tag.tagMain();
+                tag.verifyTagCreated(tagName);
+            });
     });
 
     it('37- Crear tag: solo con slug', () => {
@@ -38,16 +42,20 @@ describe('Tag Escenarios 6 - 10', () => {
 
     it('38- Crear tag con nombre y con descripción', () => {
 
-        let tagName = faker.company.companyName();
-        let tagDescription = faker.lorem.sentence(10);
+        cy.request(Cypress.env('pageJson'))
+            .then((response) => {
+                let datos = response.body;
+                let tagName = datos[Math.floor(Math.random() * datos.length)]["titulo"];
+                let tagDescription = datos[Math.floor(Math.random() * datos.length)]["descripcion1"];
 
-        tag.tagMain();
-        tag.tagNew();
-        tag.TypeTagName(tagName);
-        tag.TypeTagDescription(tagDescription);
-        tag.tagSave();
-        tag.tagMain();
-        tag.verifyTagCreated(tagName);
+                tag.tagMain();
+                tag.tagNew();
+                tag.TypeTagName(tagName);
+                tag.TypeTagDescription(tagDescription);
+                tag.tagSave();
+                tag.tagMain();
+                tag.verifyTagCreated(tagName);
+            });
     });
 
     it('39- Crear tag con nombre y descripción; editar tag recién creado sin nombre y sin descripción', () => {
