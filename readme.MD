@@ -1,6 +1,44 @@
 # MISW-4103-GHOST-AUTO-TEST
 Repositorio para la clase de Pruebas Automatizadas - Trabajo con Ghost
 
+## Ejecución Semana 7 - Escenarios cypress
+
+### Ghost v3.41.1
+Inicialmente se debe contar con una instalación local de Ghost en su versión 3.41.1, la cual fuú utilizada para realizar la pruebas.
+
+Una vez se tenga la aplicación corriendo se debe registrar un usuario con las siguientes credenciales:
+
+Correo | Clave
+---|---
+g.romeron2@uniandes.edu.co | 1234567890!
+
+### Cypress
+
+Se debe clonar el repositorio una vez dentro de él se ingreas en la carpeta:
+
+```bash
+cd 7-semana/1_ghost-cy-3.41.1
+```
+
+Dentro de esta carpeta se deben realizar los siguientes comandos para tener las dependencias necesarias:
+
+```bash
+npm i
+npm i cypress
+npm i typescript
+npm i faker-js/faker --save-dev
+```
+
+Finalmente para abrir el cypres se hace con:
+
+```
+npx cypress run
+```
+
+Desde ahí se puede seleccionar el asser que se quiera correr y se pueden apreciar las pruebas deseadas.
+
+---
+
 ## 1. Instalación Ghost - local
 
 Para instalar Ghost en la versión 3.41.1 en la cual se hicieron las pruebas, se clona el repositorio con:
@@ -54,42 +92,8 @@ Correo: g.romeron2@uniandes.edu.co
 Clave: 1234567890!
 ```
 
-## 2. Instalación y ejecución de cypress
 
-Dentro de la carpeta del repositorio entrar en
-
-```bash
-cd /MISW-4103-GHOS-AUTO-TEST/5-semana/1_ghost_e2e_cypress
-```
-
-Se instalan las dependecias con
-
-```bash
-npm install
-```
-
-```bash
-npm install @faker-js/faker --save-dev
-```
-
-Se ejecuta el set de pruebas con
-
-```bash
-cypress run
-```
-En caso de requerir correr las pruebas por consola se puede hacer directamente desde la carpeta `/5-semana/1_ghost_e2e_cypress/`con
-
-```bash
-cypress run --headless --browser chrome
-```
-
-Y para correr solamente una prueba en particular
-
-```bash
-cypress run --headless --browser chrome --spec cypress/integration/4_e2e-tag.spec.js
-```
-
-## 3. Instalación y ejecución de kraken
+## 2. Instalación y ejecución de kraken
 
 Dentro de la carpeta del repositorio entrar en
 
