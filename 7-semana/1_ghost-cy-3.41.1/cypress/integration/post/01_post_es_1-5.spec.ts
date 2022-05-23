@@ -393,91 +393,117 @@ describe('Post Escenarios 1 - 22', () => {
         cy.get(".post-full-custom-excerpt").should("contain",excerpt);
     });
 
+
     it("13. Crear post con excerpt - Ir al post creado – modificar el excerpt – verificar el cambio",()=>{
-        var postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
-        var postBody = faker.lorem.paragraph();
-        var excerpt = "Excerpt "+postTitle;
-        var excerpt2 = "Edited Excerpt "+postTitle;
-        post.postMain();
-        post.postNew();
-        post.postTitleInput(postTitle);
-        post.postParagraphInput(postBody);
-        post.openSettings();
-        post.addExcerpt(excerpt);
-        post.closeSettings();
-        post.publishPost();
-        post.postMain();
-        post.goToPublishedPostsList();
-        post.clicPostWithTitle(postTitle);
-        post.openSettings();
-        post.editExcerpt(excerpt2);
-        cy.wait(1000);
-        post.viewPost();
-        cy.get(".post-full-custom-excerpt").invoke('text').should("contain",excerpt2);
+        cy.request(Cypress.env('postJson')).then((response) => {
+            let datos = response.body;
+            // var postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
+            // var postBody = faker.lorem.paragraph();
+            var postTitle = datos[0]["postTitle1"];
+            var postBody = datos[0]["postBody1"];
+            var excerpt = "Excerpt "+postTitle;
+            var excerpt2 = "Edited Excerpt "+postTitle;
+            post.postMain();
+            post.postNew();
+            post.postTitleInput(postTitle);
+            post.postParagraphInput(postBody);
+            post.openSettings();
+            post.addExcerpt(excerpt);
+            post.closeSettings();
+            post.publishPost();
+            post.postMain();
+            post.goToPublishedPostsList();
+            post.clicPostWithTitle(postTitle);
+            post.openSettings();
+            post.editExcerpt(excerpt2);
+            cy.wait(1000);
+            post.viewPost();
+            cy.get(".post-full-custom-excerpt").invoke('text').should("contain",excerpt2);
+        });
+
     });
 
     it("14. Crear post – agregarle inyección de código en el header  - publicar – verificar que el post contenga el header",()=>{
-        var postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
-        var postBody = faker.lorem.paragraph();
-        var mensaje = faker.lorem.word();
-        var code = "$( document ).ready(function() {console.log('"+mensaje+"!');});";
-        post.postMain();
-        post.postNew();
-        post.postTitleInput(postTitle);
-        post.postParagraphInput(postBody);
-        post.openSettings();
-        post.addCodeInjection(code);
-        post.closeSettings();
-        post.publishPost();
-        post.postMain();
-        post.goToPublishedPostsList();
-        post.clicPostWithTitle(postTitle);
-        post.openSettings();
-        cy.get('button').contains('Code injection').click();
-        cy.wait(2000);
-        let text = post.getCodeInjection();
-        text.should("contain",code);
+        cy.request(Cypress.env('postJson')).then((response) => {
+            let datos = response.body;
+            var postTitle = datos[0]["postTitle1"];
+            var postBody = datos[0]["postBody1"];
+            var mensaje = datos[0]["word"];
+            // var postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
+            // var postBody = faker.lorem.paragraph();
+            // var mensaje = faker.lorem.word();
+            var code = "$( document ).ready(function() {console.log('"+mensaje+"!');});";
+            post.postMain();
+            post.postNew();
+            post.postTitleInput(postTitle);
+            post.postParagraphInput(postBody);
+            post.openSettings();
+            post.addCodeInjection(code);
+            post.closeSettings();
+            post.publishPost();
+            post.postMain();
+            post.goToPublishedPostsList();
+            post.clicPostWithTitle(postTitle);
+            post.openSettings();
+            cy.get('button').contains('Code injection').click();
+            cy.wait(2000);
+            let text = post.getCodeInjection();
+            text.should("contain",code);
+        });
     });
 
     it("15. Crear post sin título - verificar que se guarda con título '(Untitled)'",()=>{
-        var postBody = faker.lorem.paragraph();
-        post.postMain();
-        post.postNew();
-        post.postParagraphInput(postBody);
-        post.postMain();
-        post.goToDraftPostsList();
-        let title = post.getFirstDraftPostTitle();
-        title.should("contain","(Untitled)");
+        cy.request(Cypress.env('postJson')).then((response) => {
+            let datos = response.body;
+            var postBody = datos[0]["postBody1"];
+            post.postMain();
+            post.postNew();
+            post.postParagraphInput(postBody);
+            post.postMain();
+            post.goToDraftPostsList();
+            let title = post.getFirstDraftPostTitle();
+            title.should("contain","(Untitled)");
+        });
     });
 
     it("16. Crear post - publicarlo - verificar que está en lista de posts publicados -  despublicarlo - verificar que aparece en la lista de posts en estado Draft",()=>{
-        var postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
-        var postBody = faker.lorem.paragraph();
-        post.postMain();
-        post.postNew();
-        post.postTitleInput(postTitle);
-        post.postParagraphInput(postBody);
-        post.publishPost();
-        post.postMain();
-        post.goToPublishedPostsList();
-        post.getFirstPublishedPostTitle().should("contain", postTitle);
-        post.clicPostWithTitle(postTitle);
-        post.unpublishPost();
-        cy.wait(1000);
-        post.clickPostMenu();
-        post.goToDraftPostsList();
-        post.getFirstDraftPostTitle().should("contain", postTitle);
+        cy.request(Cypress.env('postJson')).then((response) => {
+            let datos = response.body;
+            var postTitle = datos[0]["postTitle1"];
+            var postBody = datos[0]["postBody1"];
+            // var postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
+            // var postBody = faker.lorem.paragraph();
+            post.postMain();
+            post.postNew();
+            post.postTitleInput(postTitle);
+            post.postParagraphInput(postBody);
+            post.publishPost();
+            post.postMain();
+            post.goToPublishedPostsList();
+            post.getFirstPublishedPostTitle().should("contain", postTitle);
+            post.clicPostWithTitle(postTitle);
+            post.unpublishPost();
+            cy.wait(1000);
+            post.clickPostMenu();
+            post.goToDraftPostsList();
+            post.getFirstDraftPostTitle().should("contain", postTitle);
+        });
     });
 
     it("17. Crear post  - programarlo con fecha inválida – verificar mensaje de error",()=>{
-        var postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
-        var postBody = faker.lorem.paragraph();
-        post.postMain();
-        post.postNew();
-        post.postTitleInput(postTitle);
-        post.postParagraphInput(postBody);
-        post.schedulePostWrongDate();
-        cy.get(".gh-date-time-picker-error").should("contain","Invalid date format, must be YYYY-MM-DD");
+        cy.request(Cypress.env('postJson')).then((response) => {
+            let datos = response.body;
+            var postTitle = datos[0]["postTitle1"];
+            var postBody = datos[0]["postBody1"];
+            // var postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
+            // var postBody = faker.lorem.paragraph();
+            post.postMain();
+            post.postNew();
+            post.postTitleInput(postTitle);
+            post.postParagraphInput(postBody);
+            post.schedulePostWrongDate();
+            cy.get(".gh-date-time-picker-error").should("contain","Invalid date format, must be YYYY-MM-DD");
+        });
     });
 
     it("18. Crear post  - programarlo con hora inválida – verificar mensaje de error",()=>{
