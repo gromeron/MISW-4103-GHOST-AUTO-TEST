@@ -3,6 +3,8 @@ Repositorio para la clase de Pruebas Automatizadas - Trabajo con Ghost
 
 ## Ejecución Semana 7 - Escenarios cypress
 
+### Nota: En la Wiki se encuentran detallados los escenarios de la semana 7 con sus estrategias definidas.
+
 ### Ghost v3.41.1
 Inicialmente se debe contar con una instalación local de Ghost en su versión 3.41.1, la cual fuú utilizada para realizar la pruebas.
 
@@ -26,6 +28,7 @@ Dentro de esta carpeta se deben realizar los siguientes comandos para tener las 
 npm i
 npm i cypress
 npm i typescript
+npm i dayjs
 npm i faker-js/faker --save-dev
 ```
 
@@ -38,6 +41,8 @@ npx cypress run
 Desde ahí se puede seleccionar el asser que se quiera correr y se pueden apreciar las pruebas deseadas.
 
 ---
+
+
 
 ## 1. Instalación Ghost - local
 

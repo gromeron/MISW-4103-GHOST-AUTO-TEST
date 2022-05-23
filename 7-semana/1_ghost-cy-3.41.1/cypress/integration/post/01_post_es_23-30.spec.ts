@@ -13,6 +13,7 @@ describe('Post Escenarios 23 - 26', () => {
 
 
 
+
     it("23. Crear post – agregarle inyección de código en el footer  - publicar – verificar que el post contenga el footer",()=>{
         var postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
         var postBody = faker.lorem.paragraph();
@@ -133,6 +134,106 @@ describe('Post Escenarios 23 - 26', () => {
         post.openSettings();
         post.selectMetaDataPost();
         post.checkMetaDataPost(metaTitle2,metaDescription2,canonicalUrl2);
+    });
+
+
+
+
+    it("27. Crear post – agregar twitter data - publicar – verificar que el post contenga twitter data",()=>{
+        var postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
+        var postBody = faker.lorem.paragraph();
+        let twitterTitle = faker.company.companyName();
+        let twitterDescripcion = faker.lorem.paragraphs(1);
+        post.postMain();
+        post.postNew();
+        post.postTitleInput(postTitle);
+        post.postParagraphInput(postBody);
+        post.openSettings();
+        post.selectTwitterCardPage()
+        post.pageTypeTwitterTitle(twitterTitle);
+        post.pageTypeTwitterDescription(twitterDescripcion);
+        post.closeSettings();
+        post.publishPost();
+        post.postMain();
+        post.goToPublishedPostsList();
+        post.clicPostWithTitle(postTitle);
+        post.openSettings();
+        post.selectTwitterCardPage()
+        post.checkTwitterDataPost(twitterTitle,twitterDescripcion);
+    });
+
+    it("28. Crear post – agregar twitter data - publicar – verificar que el post contenga twitter data – editar twitter data – actualizar - verificar el cambio",()=>{
+        var postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
+        var postBody = faker.lorem.paragraph();
+        let twitterTitle = faker.company.companyName();
+        let twitterTitle2 = faker.company.companyName();
+        let twitterDescripcion = faker.lorem.paragraphs(1);
+        let twitterDescripcion2 = faker.lorem.paragraphs(1);
+        post.postMain();
+        post.postNew();
+        post.postTitleInput(postTitle);
+        post.postParagraphInput(postBody);
+        post.openSettings();
+        post.selectTwitterCardPage()
+        post.pageTypeTwitterTitle(twitterTitle);
+        post.pageTypeTwitterDescription(twitterDescripcion);
+        post.closeSettings();
+        post.publishPost();
+        post.postMain();
+        post.goToPublishedPostsList();
+        post.clicPostWithTitle(postTitle);
+        post.openSettings();
+        post.selectTwitterCardPage()
+        post.checkTwitterDataPost(twitterTitle,twitterDescripcion);
+        post.pageTypeTwitterTitle(twitterTitle2);
+        post.pageTypeTwitterDescription(twitterDescripcion2);
+        post.closeSettings();
+        post.publishPost();
+        post.postMain();
+        post.goToPublishedPostsList();
+        post.clicPostWithTitle(postTitle);
+        post.openSettings();
+        post.selectTwitterCardPage()
+        post.checkTwitterDataPost(twitterTitle2,twitterDescripcion2);
+    });
+
+
+
+
+    it("29. Crear post con titulo y con opción (+) Email, verificar que post quedó en estado published.", () => {
+
+        var postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
+        var postEmail = faker.internet.email();
+        post.postMain();
+        post.postNew();
+        post.pageAddPlus();
+        post.pagePlusClicAddEmail();
+        post.pagePlusTypeEmail(postEmail);
+        post.postTitleInput(postTitle);
+        post.publishPost();
+        post.postMain();
+        post.goToPublishedPostsList();
+        post.verifyPostList(postTitle, "PUBLISHED");
+
+
+    });
+
+    it("30. Crear página con nombre, descripción y con opción (+) Youtube (pegar link), verificar que página quedó en estado published.", () => {
+
+        let postTitle = faker.company.companyName() + " " + faker.random.number({ min: 1900, max: 2022 });
+        let pageUrlYoutube = Cypress.env('youtubeUrl');
+        post.postMain();
+        post.postNew();
+        post.pageAddPlus();
+        post.pagePlusClicAddYoutube();
+        post.pagePlusTypeLinkYoutube(pageUrlYoutube);
+        post.postTitleInput(postTitle);
+        post.publishPost();
+        post.postMain();
+        post.goToPublishedPostsList();
+        post.verifyPostList(postTitle, "PUBLISHED");
+
+
     });
 
 

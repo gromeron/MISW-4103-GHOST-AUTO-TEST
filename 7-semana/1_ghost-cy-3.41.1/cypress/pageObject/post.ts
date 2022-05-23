@@ -15,6 +15,7 @@ export class Post {
 
     // Ingresar el título de un post
     postTitleInput(title: string) {
+        cy.get('.gh-editor-title.ember-text-area.gh-input.ember-view').clear({force:true});
         cy.get('.gh-editor-title.ember-text-area.gh-input.ember-view').type(title, { force: true });
         cy.wait(1000);
     }
@@ -24,11 +25,47 @@ export class Post {
         cy.wait(1000);
     }
 
+    verifyPostList(pageTitle: string, pageStatus: string) {
+        var countPages = 0;
+        var countStatusPage = 0;
+        var indexPage = 0;
+        cy.get('main').scrollTo('bottom', {ensureScrollable: false});
+        cy.wait(1000);
+        cy.get('main').scrollTo('bottom', {ensureScrollable: false});
+        cy.wait(1000);
+        cy.get('main').scrollTo('bottom', {ensureScrollable: false});
+        cy.wait(1000);
+        cy.get('.content-list h3')
+            .each(($h3) => {
+                countPages++;
+                if ($h3.length > 0) {
+                    if ($h3[0].innerText === pageTitle) {
+                        indexPage = countPages;
+                        countStatusPage = 0;
+                        cy.get('.content-list span.nowrap')
+                            .each(($span) => {
+                                countStatusPage++;
+                                if ($span.length > 0) {
+                                    if (countStatusPage === indexPage) {
+                                        if($span[0].innerText.toUpperCase() == pageStatus){
+                                            expect($h3[0].innerText).to.equal(pageTitle);
+                                            expect($span[0].innerText.toUpperCase()).to.equal(pageStatus);
+                                        }
+                                    }
+                                }
+                            });
+
+                    }
+                }
+            });
+
+    };
+
     // publicar un post
     publishPost() {
-        cy.get(".ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger").click();
+        cy.get(".ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger").click({force:true});
         cy.wait(1000);
-        cy.get("button.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view").click();
+        cy.get("button.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view").click({force:true});
         cy.wait(1000);
     }
 
@@ -364,6 +401,54 @@ export class Post {
         cy.get('#meta-title').should('have.value', title);
         cy.get('#meta-description').should('have.value', description);
         cy.get('.post-setting-canonicalUrl').should('have.value', url);
+    }
+
+    selectTwitterCardPage(){
+        cy.get(".settings-menu-content li").contains("Twitter card").first().click({ force: true });
+        cy.wait(1000);
+    }
+
+    pageTypeTwitterTitle(twitterTitle: string){
+        let element2 = cy.get('#twitter-title');
+        element2.clear({force:true});
+        return element2.type(twitterTitle, { force: true });
+    }
+
+    pageTypeTwitterDescription(twitterDescription: string){
+        let element2 = cy.get('#twitter-description');
+        element2.clear({force:true});
+        return element2.type(twitterDescription, { force: true });
+    }
+
+    checkTwitterDataPost(title:string,description:string){
+        cy.get('#twitter-title').should('have.value', title);
+        cy.get('#twitter-description').should('have.value', description);
+    }
+
+    pageAddPlus(){
+        cy.get('.koenig-plus-menu-button').first().click();
+        cy.wait(1000);
+    }
+
+    pagePlusClicAddYoutube(){
+        cy.get('.koenig-cardmenu div[data-kg*="cardmenu-card"]').contains("/youtube [video url]").first().click();
+        cy.wait(1000);
+    }
+
+    pagePlusClicAddEmail(){
+        cy.get('.koenig-cardmenu div[data-kg*="cardmenu-card"]').contains("Only visible when delivered by email").first().click();
+        cy.wait(1000);
+    }
+
+    pagePlusTypeEmail(pagePlusEmail: string){
+        let element2 = cy.get('.koenig-text-replacement-html-input__editor.__mobiledoc-editor');
+        return element2.type(pagePlusEmail, { force: true });
+    }
+
+    pagePlusTypeLinkYoutube(pageLinkYoutube: string){
+        let element = cy.get('.koenig-editor__editor-wrapper [name*="url"]');
+        element.type(pageLinkYoutube, { force: true });
+        cy.wait(7000);
     }
 
 }
