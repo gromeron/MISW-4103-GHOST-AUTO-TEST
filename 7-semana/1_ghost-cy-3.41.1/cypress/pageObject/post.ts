@@ -3,9 +3,9 @@ export class Post {
     constructor() {}
      //Dar clic en posts y verificar que la url es correcta
     postMain() {
-        cy.get('a[href$="#/posts/"]').first().click();
-        cy.wait(2000);
-        cy.url().should('eq', 'http://localhost:2368/ghost/#/posts');
+        cy.get('a[href*="posts"]').first().click();
+        cy.wait(1000);
+        cy.url().should('contain', 'http://localhost:2368/ghost/#/posts');
     }
 
     //Dar clic en botón de nuevo post en página principal
@@ -243,6 +243,7 @@ export class Post {
 
     // Ir a la lista de posts publicados:
     goToPublishedPostsList(){
+        cy.wait(1000);
         cy.get('a[href="#/posts/?type=published"]').first().click();
         cy.wait(1000);
     }
@@ -258,6 +259,11 @@ export class Post {
     getCodeInjection()
     {
         return cy.get("div.post-setting-codeinjection.ember-view textarea").first().invoke('text');
+    }
+
+    getCodeInjectionFooter(code:string)
+    {
+        cy.get('.CodeMirror-line span').should('contain',code);
     }
 
     schedulePostWrongDate()
@@ -314,5 +320,50 @@ export class Post {
         cy.wait(1000);
     }
 
+
+    selectCodeInjectionPost(){
+        cy.get(".settings-menu-content li").contains("Code injection").first().click({ force: true });
+        cy.wait(1000);
+    }
+
+    postTypeCodeInjectionFooter(pageCodeHtml: string){
+        let element = cy.get('.CodeMirror textarea').last();
+        element.clear({force: true});
+        return element.type(pageCodeHtml, { force: true });
+    }
+
+    postTypeCodeInjectionHeader(pageCodeHtml: string){
+        let element = cy.get('.CodeMirror textarea').first();
+        return element.type(pageCodeHtml, { force: true });
+    }
+
+    selectMetaDataPost(){
+        cy.get(".settings-menu-content li").contains("Meta data").first().click({ force: true });
+        cy.wait(1000);
+    }
+
+    postTypeMetaTitle(metaTitle: string){
+        let element2 = cy.get('#meta-title');
+        element2.clear();
+        return element2.type(metaTitle, { force: true });
+    }
+
+    postTypeMetaDescription(metaDescription: string){
+        let element2 = cy.get('#meta-description');
+        element2.clear();
+        return element2.type(metaDescription, { force: true });
+    }
+
+    postTypeMetaCanonicalUrl(canonicalUrl: any){
+        let element2 = cy.get('.post-setting-canonicalUrl');
+        element2.clear();
+        return element2.type(canonicalUrl, { force: true });
+    }
+
+    checkMetaDataPost(title:string,description:string,url:string){
+        cy.get('#meta-title').should('have.value', title);
+        cy.get('#meta-description').should('have.value', description);
+        cy.get('.post-setting-canonicalUrl').should('have.value', url);
+    }
 
 }
