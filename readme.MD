@@ -26,7 +26,7 @@ Dentro de esta carpeta se deben realizar los siguientes comandos para tener las 
 
 ```bash
 npm i
-npm i cypress
+npm install --save-dev cypress@9.7.0
 npm i typescript
 npm i dayjs
 npm i faker-js/faker --save-dev
