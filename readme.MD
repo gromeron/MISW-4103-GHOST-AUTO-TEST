@@ -1,7 +1,7 @@
 # MISW-4103-GHOST-AUTO-TEST
 Repositorio para la clase de Pruebas Automatizadas - Trabajo con Ghost
 
-## Ejecución Semana 7 - Escenarios cypress
+## Ejecución Semana 8 - Escenarios cypress
 
 ### Nota: En la Wiki se encuentran detallados los escenarios de la semana 7 con sus estrategias definidas.
 
@@ -19,7 +19,7 @@ g.romeron2@uniandes.edu.co | 1234567890!
 Se debe clonar el repositorio una vez dentro de él se ingreas en la carpeta:
 
 ```bash
-cd 7-semana/1_ghost-cy-3.41.1
+cd 8-semana/1_ghost-cy-3.41.1
 ```
 
 Dentro de esta carpeta se deben realizar los siguientes comandos para tener las dependencias necesarias:
