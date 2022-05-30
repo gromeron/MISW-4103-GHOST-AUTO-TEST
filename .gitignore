@@ -185,5 +185,8 @@ cypress/videos
 7-semana/1_ghost-cy-3.41.1/cypress/screenshots
 7-semana/1_ghost-cy-3.41.1/cypress/videos
 
-8-semana/1_ghost-cy-3.41.1/cypress/screenshots
-8-semana/1_ghost-cy-3.41.1/cypress/videos
+8-semana/1_e2e_ghost_cy-3.41.1/cypress/screenshots
+8-semana/1_e2e_ghost_cy-3.41.1/cypress/videos
+
+8-semana/3_escenarios_ghost-cy-3.41.1/cypress/screenshots
+8-semana/3_escenarios_ghost-cy-3.41.1/cypress/videos
